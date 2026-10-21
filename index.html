@@ -1,0 +1,1079 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#070B14">
+    <title>آما مووی | فیلم و سریال</title>
+
+    <link rel="stylesheet" href="./output.css">
+    <!-- فایل CSS اصلی پروژه -->
+    <link href="./output.css" rel="stylesheet">
+      <link href="./css/vendors/aos.css" rel="stylesheet" >
+    <link href="./7a00e50d05e53a2e.css" rel="stylesheet" />
+    
+<!---    <link href="a.js" rel="stylesheet" />-->
+
+
+        <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
+         <script src="tailwindcss.js"></script>
+
+    <style>
+        @font-face {
+            font-family: "Vazirmatn";
+            src: url("./font/yekan-regular.woff") format("woff");
+            font-weight: 100 900;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        body {
+            font-family: "Vazirmatn", sans-serif;
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+
+        .hero-bg {
+            background-image:
+                linear-gradient(
+                    to bottom,
+                    rgba(7, 11, 20, .20),
+                    rgba(7, 11, 20, .40) 45%,
+                    #070B14 100%
+                ),
+                url("./images/hero-dark.jpg");
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            transition: background-image .3s ease;
+        }
+
+        html.light .hero-bg {
+            background-image:
+                linear-gradient(
+                    to bottom,
+                    rgba(255, 255, 255, .08),
+                    rgba(255, 255, 255, .20) 45%,
+                    #F8FAFC 100%
+                ),
+                url("./images/hero-light.jpg");
+        }
+
+        html.dark body {
+            background-color: #070B14;
+            color: #F8FAFC;
+        }
+
+        html.light body {
+            background-color: #F8FAFC;
+            color: #0F172A;
+        }
+
+        html.dark .site-header {
+            background-color: rgba(8, 15, 30, .88);
+            border-color: rgba(59, 130, 246, .28);
+        }
+
+        html.light .site-header {
+            background-color: rgba(255, 255, 255, .90);
+            border-color: rgba(37, 99, 235, .25);
+        }
+
+        html.dark .nav-label {
+            color: #CBD5E1;
+        }
+
+        html.light .nav-label {
+            color: #334155;
+        }
+
+        html.dark .search-dialog {
+            background-color: #0B1425;
+            color: #F8FAFC;
+        }
+
+        html.light .search-dialog {
+            background-color: #FFFFFF;
+            color: #0F172A;
+        }
+
+        html.light .mobile-menu-panel {
+            background-color: rgba(255, 255, 255, .97);
+            color: #0F172A;
+        }
+
+        .nav-item {
+            min-width: 54px;
+        }
+
+        .nav-item svg {
+            transition: transform .2s, color .2s;
+        }
+
+        .nav-item:hover svg {
+            transform: translateY(-2px);
+        }
+
+        .search-backdrop {
+            background: rgba(0, 0, 0, .72);
+            backdrop-filter: blur(8px);
+        }
+
+        /* تم روشن سراسری: بخش‌هایی که رنگ تیره‌شان با کلاس‌های ثابت تعریف شده */
+        html.light main {
+            background: #F1F5F9 !important;
+            color: #0F172A !important;
+        }
+        html.light main [class*="bg-[#030916]"],
+        html.light main [class*="bg-[#020711]"],
+        html.light main [class*="bg-[#071121]"],
+        html.light main [class*="bg-[#0a1528]"],
+        html.light main [class*="bg-[#091426]"],
+        html.light main [class*="bg-slate-950"] {
+            background-color: #FFFFFF !important;
+        }
+        html.light main [class*="border-white/10"],
+        html.light main [class*="border-white/5"] {
+            border-color: #E2E8F0 !important;
+        }
+        html.light main [class*="text-white"] {
+            color: #0F172A !important;
+        }
+        html.light main [class*="text-slate-200"],
+        html.light main [class*="text-slate-300"],
+        html.light main [class*="text-slate-400"],
+        html.light main [class*="text-slate-500"] {
+            color: #475569 !important;
+        }
+        html.light main input,
+        html.light main textarea,
+        html.light main select {
+            color: #0F172A !important;
+        }
+        html.light main input::placeholder,
+        html.light main textarea::placeholder {
+            color: #64748B !important;
+        }
+        html.light main .bg-blue-600,
+        html.light main .bg-blue-700,
+        html.light main button.bg-blue-600,
+        html.light main a.bg-blue-600 {
+            color: #FFFFFF !important;
+        }
+        html.light #mobile-menu {
+            background-color: rgba(255,255,255,.97) !important;
+            border-color: #CBD5E1 !important;
+        }
+        html.light #home h1 { color: #0F172A !important; }
+        html.light #home p { color: #334155 !important; }
+        html.light #home span.bg-blue-900 {
+            background-color: #DBEAFE !important;
+            color: #1D4ED8 !important;
+        }
+        html.light footer {
+            background-color: #E2E8F0 !important;
+            color: #0F172A !important;
+            border-color: #CBD5E1 !important;
+        }
+        html.light footer [class*="text-slate-"] { color: #475569 !important; }
+    </style>
+</head>
+
+<body class="min-h-screen font-Vazirmatn transition-colors duration-300">
+
+    <!-- تصویر پس‌زمینه از این قسمت شروع می‌شود -->
+    <section id="home" class="hero-bg relative min-h-[620px]">
+
+        <!-- HEADER ثابت -->
+        <header class="fixed inset-x-0 top-0 z-50 px-3 pt-4 sm:px-6">
+
+            <div class="site-header mx-auto flex w-full max-w-7xl
+                        items-center gap-3 rounded-full border
+                        border-b-4 border-b-blue-600 px-4 py-3
+                        shadow-2xl shadow-black/20
+                        backdrop-blur-xl transition-colors duration-300
+                        sm:gap-6 sm:px-6">
+
+                <!-- لوگو -->
+                <a href="#home"
+                   class="flex shrink-0 items-center gap-2 text-lg
+                          font-black sm:text-2xl">
+
+                    <img
+                src="./images/ChatGPT Image Jun 20, 2026, 03_14_11 PM.png"
+                alt="لوگوی آما مووی"
+                class="h-12 w-12 shrink-0 rounded-full object-contain sm:h-12 sm:w-12"
+            >
+                    <span class="whitespace-nowrap">
+                        آما <span class="text-blue-500">مووی</span>
+                    </span>
+                </a>
+
+                <!-- منوی اصلی، آیکون بالا و عنوان پایین -->
+                <nav class="hidden flex-1 items-center justify-center
+                            gap-3 sm:gap-5 md:flex lg:gap-8">
+
+                    <a href="#home"
+                       class="nav-item flex flex-col items-center gap-1
+                              text-blue-500">
+                        <svg class="h-5 w-5" viewBox="0 0 24 24"
+                             fill="none" stroke="currentColor"
+                             stroke-width="1.8">
+                            <path d="m3 10 9-7 9 7"/>
+                            <path d="M5 9v11h14V9M9 20v-7h6v7"/>
+                        </svg>
+                        <span class="text-xs font-bold">خانه</span>
+                    </a>
+
+                    <a href="#latest"
+                       class="nav-item nav-label flex flex-col items-center gap-1
+                              transition hover:text-blue-500">
+                        <svg class="h-5 w-5" viewBox="0 0 24 24"
+                             fill="none" stroke="currentColor"
+                             stroke-width="1.8">
+                            <rect x="3" y="4" width="18" height="16" rx="3"/>
+                            <path d="M7 4v4m5-4v4m5-4v4M7 16v4m5-4v4m5-4v4"/>
+                        </svg>
+                        <span class="text-xs">فیلم‌ها</span>
+                    </a>
+
+                    <a href="#series"
+                       class="nav-item nav-label flex flex-col items-center gap-1
+                              transition hover:text-blue-500">
+                        <svg class="h-5 w-5" viewBox="0 0 24 24"
+                             fill="none" stroke="currentColor"
+                             stroke-width="1.8">
+                            <rect x="3" y="7" width="18" height="14" rx="2"/>
+                            <path d="m9 3 3 4 3-4M12 11v6"/>
+                        </svg>
+                        <span class="text-xs">سریال‌ها</span>
+                    </a>
+
+                    <a href="#genres"
+                       class="nav-item nav-label flex flex-col items-center gap-1
+                              transition hover:text-blue-500">
+                        <svg class="h-5 w-5" viewBox="0 0 24 24"
+                             fill="none" stroke="currentColor"
+                             stroke-width="1.8">
+                            <rect x="3" y="3" width="7" height="7" rx="1"/>
+                            <rect x="14" y="3" width="7" height="7" rx="1"/>
+                            <rect x="3" y="14" width="7" height="7" rx="1"/>
+                            <rect x="14" y="14" width="7" height="7" rx="1"/>
+                        </svg>
+                        <span class="text-xs">ژانرها</span>
+                    </a>
+
+                    <a href="#latest"
+                       class="nav-item nav-label flex flex-col items-center gap-1
+                              transition hover:text-blue-500">
+                        <svg class="h-5 w-5" viewBox="0 0 24 24"
+                             fill="none" stroke="currentColor"
+                             stroke-width="1.8">
+                            <path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9L12 3Z"/>
+                        </svg>
+                        <span class="text-xs">محبوب‌ها</span>
+                    </a>
+
+                </nav>
+
+                <!-- کنترل‌ها -->
+                <div class="mr-auto flex shrink-0 items-center gap-2">
+
+                    <!-- باز کردن پنجره جست‌وجو -->
+                    <button id="search-open"
+                            type="button"
+                            aria-label="جست‌وجو"
+                            class="flex h-10 w-10 items-center justify-center
+                                   rounded-full bg-blue-500/10 text-blue-500
+                                   transition hover:bg-blue-500/20 sm:h-11 sm:w-11">
+
+                        <svg class="h-5 w-5" viewBox="0 0 24 24"
+                             fill="none" stroke="currentColor"
+                             stroke-width="2">
+                            <circle cx="11" cy="11" r="7"/>
+                            <path d="m16 16 5 5"/>
+                        </svg>
+                    </button>
+
+                    <!-- تغییر تم -->
+                    <button id="theme-toggle"
+                            type="button"
+                            aria-label="تغییر تم سایت"
+                            class="flex h-10 w-10 items-center justify-center
+                                   rounded-full bg-blue-500/10 text-blue-500
+                                   transition hover:bg-blue-500/20 sm:h-11 sm:w-11">
+
+                        <svg id="theme-sun" class="hidden h-5 w-5"
+                             viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="1.8">
+                            <circle cx="12" cy="12" r="4"/>
+                            <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/>
+                        </svg>
+
+                        <svg id="theme-moon" class="h-5 w-5"
+                             viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="1.8">
+                            <path d="M20.9 13A9 9 0 0 1 11 3.1 9 9 0 1 0 20.9 13Z"/>
+                        </svg>
+                    </button>
+
+                    <a href="#login"
+                       class="hidden rounded-full bg-blue-600 px-5 py-3
+                              text-sm font-bold text-white transition
+                              hover:bg-blue-500 sm:inline-flex">
+                        ورود
+                    </a>
+
+                    <!-- منوی موبایل -->
+                    <button id="mobile-open"
+                            type="button"
+                            aria-label="باز کردن منو"
+                            aria-expanded="false"
+                            class="flex h-10 w-10 items-center justify-center
+                                   rounded-full bg-blue-500/10 text-xl
+                                   text-blue-500 md:hidden">
+                        ☰
+                    </button>
+                </div>
+            </div>
+
+            <!-- منوی موبایل با آیکون و نام زیر آن -->
+            <nav id="mobile-menu"
+                 hidden
+                 class="mx-auto mt-3 grid max-w-7xl grid-cols-3
+                        gap-2 rounded-3xl border border-blue-500/30
+                        bg-slate-950/95 p-4 shadow-2xl
+                        backdrop-blur-xl md:hidden">
+
+                <a href="#home" class="nav-label flex flex-col items-center gap-2 rounded-xl p-3 text-blue-400 hover:bg-blue-500/10">
+                    <span class="text-2xl">⌂</span>
+                    <span class="text-xs">خانه</span>
+                </a>
+
+                <a href="#latest" class="nav-label flex flex-col items-center gap-2 rounded-xl p-3 hover:bg-blue-500/10">
+                    <span class="text-2xl">🎬</span>
+                    <span class="text-xs">فیلم‌ها</span>
+                </a>
+
+                <a href="#series" class="nav-label flex flex-col items-center gap-2 rounded-xl p-3 hover:bg-blue-500/10">
+                    <span class="text-2xl">📺</span>
+                    <span class="text-xs">سریال‌ها</span>
+                </a>
+
+                <a href="#genres" class="nav-label flex flex-col items-center gap-2 rounded-xl p-3 hover:bg-blue-500/10">
+                    <span class="text-2xl">▦</span>
+                    <span class="text-xs">ژانرها</span>
+                </a>
+
+                <a href="#latest" class="nav-label flex flex-col items-center gap-2 rounded-xl p-3 hover:bg-blue-500/10">
+                    <span class="text-2xl">★</span>
+                    <span class="text-xs">محبوب‌ها</span>
+                </a>
+
+                <a href="#about" class="nav-label flex flex-col items-center gap-2 rounded-xl p-3 hover:bg-blue-500/10">
+                    <span class="text-2xl">ⓘ</span>
+                    <span class="text-xs">درباره ما</span>
+                </a>
+            </nav>
+        </header>
+
+        <!-- فضای Hero زیر هدر -->
+        <div class="mx-auto flex min-h-[620px] w-[90%] max-w-7xl
+                    items-center pt-36 pb-20 sm:pt-40">
+
+            <div class="max-w-xl">
+                <span class="inline-block rounded-full border
+                             border-blue-400/30 bg-blue-900
+                             px-4 py-2 text-sm text-blue-300">
+                    دنیای فیلم و سریال
+                </span>
+
+                <h1 class="mt-5 text-4xl font-black leading-tight
+                           text-white sm:text-6xl">
+                    داستان‌هایی که
+                    <span class="text-blue-800">فراموش نمی‌کنی</span>
+                </h1>
+
+                <p class="mt-5 max-w-lg leading-8 text-slate-200">
+                    تازه‌ترین فیلم‌ها و سریال‌ها را کشف کن و وارد
+                    دنیای بی‌پایان سینما شو.
+                </p>
+
+                <a href="#latest"
+                   class="mt-7 inline-flex items-center gap-3
+                          rounded-full bg-blue-600 px-7 py-4
+                          font-bold text-white shadow-xl
+                          shadow-blue-600/30 transition
+                          hover:-translate-y-1 hover:bg-blue-500">
+                    مشاهده فیلم‌ها
+                    <span>▶</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ادامه محتوای صفحه -->
+   
+<!-- بخش‌های محتوای صفحه -->
+<main class="min-h-screen bg-[#030916] text-white">
+
+    <!-- جست‌وجوی فیلم -->
+    <section class="mx-auto max-w-7xl px-5 pt-10 sm:px-8">
+        <form id="movie-search"
+              class="flex items-center gap-3 rounded-2xl
+                     border border-blue-400/20 bg-[#0a1528]
+                     p-3 shadow-xl shadow-black/20">
+
+            <span class="px-2 text-xl text-blue-400"
+                  aria-hidden="true">⌕</span>
+
+            <input
+                id="movie-search-input"
+                type="search"
+                placeholder="نام فیلم، سریال یا ژانر را وارد کن..."
+                class="min-w-0 flex-1 bg-transparent py-2
+                       text-sm text-white outline-none
+                       placeholder:text-slate-500"
+            >
+
+            <button type="submit"
+                    class="rounded-xl bg-blue-600 px-5 py-3
+                           text-sm font-bold transition
+                           hover:bg-blue-500">
+                جست‌وجو
+            </button>
+        </form>
+    </section>
+
+
+    <!-- جدیدترین فیلم‌ها -->
+    <section id="latest" class="mx-auto max-w-7xl px-5 py-16 sm:px-8">
+
+        <div class="mb-7 flex items-center justify-between gap-4">
+            <div>
+                <p class="mb-2 text-xs font-bold tracking-widest
+                          text-blue-400">تازه‌های سینما</p>
+                <h2 class="text-2xl font-black sm:text-3xl">
+                    جدیدترین فیلم‌ها
+                </h2>
+            </div>
+
+            <a href="#all-movies"
+               class="shrink-0 text-sm text-blue-400 transition
+                      hover:text-blue-300">
+                مشاهده همه ←
+            </a>
+        </div>
+
+        <div id="movie-grid"
+             class="grid grid-cols-2 gap-4 sm:grid-cols-3
+                    md:grid-cols-4 lg:grid-cols-6">
+
+            <!-- کارت فیلم ۱ -->
+            <article data-title="تلماسه علمی تخیلی"
+                     class="movie-card group overflow-hidden rounded-2xl
+                            border border-white/10 bg-[#091426]
+                            transition duration-300
+                            hover:-translate-y-1 hover:border-blue-500/60">
+
+                <a href="#movie-dune" class="block">
+                    <div class="relative aspect-[2/3] overflow-hidden">
+                        <img
+                            src="./images/movies/dune.jpg"
+                            alt="پوستر تلماسه"
+                            loading="lazy"
+                            class="h-full w-full object-cover transition
+                                   duration-500 group-hover:scale-105"
+                        >
+
+                        <span class="absolute right-2 top-2 rounded-lg
+                                     bg-blue-600 px-2 py-1 text-xs font-bold">
+                            جدید
+                        </span>
+
+                        <div class="absolute inset-0 flex items-center
+                                    justify-center bg-black/50 opacity-0
+                                    transition group-hover:opacity-100">
+                            <span class="rounded-full bg-blue-600 px-5 py-3
+                                         text-sm font-bold">
+                                جزئیات فیلم
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="p-3">
+                        <h3 class="truncate font-bold">تلماسه</h3>
+                        <div class="mt-2 flex items-center
+                                    justify-between text-xs text-slate-400">
+                            <span>۲۰۲۴</span>
+                            <span class="text-amber-400">★ ۸.۵</span>
+                        </div>
+                        <p class="mt-2 text-xs text-blue-400">
+                            علمی‌تخیلی
+                        </p>
+                    </div>
+                </a>
+            </article>
+
+            <!-- کارت فیلم ۲ -->
+            <article data-title="بتمن اکشن"
+                     class="movie-card group overflow-hidden rounded-2xl
+                            border border-white/10 bg-[#091426]
+                            transition duration-300
+                            hover:-translate-y-1 hover:border-blue-500/60">
+
+                <a href="#movie-batman" class="block">
+                    <div class="relative aspect-[2/3] overflow-hidden">
+                        <img src="./images/movies/batman.jpg"
+                             alt="پوستر بتمن" loading="lazy"
+                             class="h-full w-full object-cover transition
+                                    duration-500 group-hover:scale-105">
+                    </div>
+
+                    <div class="p-3">
+                        <h3 class="truncate font-bold">بتمن</h3>
+                        <div class="mt-2 flex justify-between
+                                    text-xs text-slate-400">
+                            <span>۲۰۲۲</span>
+                            <span class="text-amber-400">★ ۷.۸</span>
+                        </div>
+                        <p class="mt-2 text-xs text-blue-400">اکشن</p>
+                    </div>
+                </a>
+            </article>
+
+            <!-- کارت فیلم ۳ -->
+            <article data-title="میان ستاره ای علمی تخیلی"
+                     class="movie-card group overflow-hidden rounded-2xl
+                            border border-white/10 bg-[#091426]
+                            transition duration-300
+                            hover:-translate-y-1 hover:border-blue-500/60">
+
+                <a href="#movie-interstellar" class="block">
+                    <div class="relative aspect-[2/3] overflow-hidden">
+                        <img src="./images/movies/interstellar.jpg"
+                             alt="پوستر میان‌ستاره‌ای" loading="lazy"
+                             class="h-full w-full object-cover transition
+                                    duration-500 group-hover:scale-105">
+                    </div>
+
+                    <div class="p-3">
+                        <h3 class="truncate font-bold">میان‌ستاره‌ای</h3>
+                        <div class="mt-2 flex justify-between
+                                    text-xs text-slate-400">
+                            <span>۲۰۱۴</span>
+                            <span class="text-amber-400">★ ۸.۶</span>
+                        </div>
+                        <p class="mt-2 text-xs text-blue-400">
+                            علمی‌تخیلی
+                        </p>
+                    </div>
+                </a>
+            </article>
+
+            <!-- کارت فیلم ۴ -->
+            <article data-title="جان ویک اکشن"
+                     class="movie-card group overflow-hidden rounded-2xl
+                            border border-white/10 bg-[#091426]
+                            transition duration-300
+                            hover:-translate-y-1 hover:border-blue-500/60">
+
+                <a href="#movie-john-wick" class="block">
+                    <div class="relative aspect-[2/3] overflow-hidden">
+                        <img src="./images/movies/john-wick.jpg"
+                             alt="پوستر جان ویک" loading="lazy"
+                             class="h-full w-full object-cover transition
+                                    duration-500 group-hover:scale-105">
+                    </div>
+
+                    <div class="p-3">
+                        <h3 class="truncate font-bold">جان ویک</h3>
+                        <div class="mt-2 flex justify-between
+                                    text-xs text-slate-400">
+                            <span>۲۰۱۴</span>
+                            <span class="text-amber-400">★ ۷.۴</span>
+                        </div>
+                        <p class="mt-2 text-xs text-blue-400">اکشن</p>
+                    </div>
+                </a>
+            </article>
+
+            <!-- کارت فیلم ۵ -->
+            <article data-title="گرگ وال استریت درام"
+                     class="movie-card group overflow-hidden rounded-2xl
+                            border border-white/10 bg-[#091426]
+                            transition duration-300
+                            hover:-translate-y-1 hover:border-blue-500/60">
+
+                <a href="#movie-wolf" class="block">
+                    <div class="relative aspect-[2/3] overflow-hidden">
+                        <img src="./images/movies/wolf.jpg"
+                             alt="پوستر گرگ وال استریت" loading="lazy"
+                             class="h-full w-full object-cover transition
+                                    duration-500 group-hover:scale-105">
+                    </div>
+
+                    <div class="p-3">
+                        <h3 class="truncate font-bold">گرگ وال استریت</h3>
+                        <div class="mt-2 flex justify-between
+                                    text-xs text-slate-400">
+                            <span>۲۰۱۳</span>
+                            <span class="text-amber-400">★ ۸.۲</span>
+                        </div>
+                        <p class="mt-2 text-xs text-blue-400">درام</p>
+                    </div>
+                </a>
+            </article>
+
+            <!-- کارت فیلم ۶ -->
+            <article data-title="تلقین اکشن"
+                     class="movie-card group overflow-hidden rounded-2xl
+                            border border-white/10 bg-[#091426]
+                            transition duration-300
+                            hover:-translate-y-1 hover:border-blue-500/60">
+
+                <a href="#movie-inception" class="block">
+                    <div class="relative aspect-[2/3] overflow-hidden">
+                        <img src="./images/movies/inception.jpg"
+                             alt="پوستر تلقین" loading="lazy"
+                             class="h-full w-full object-cover transition
+                                    duration-500 group-hover:scale-105">
+                    </div>
+
+                    <div class="p-3">
+                        <h3 class="truncate font-bold">تلقین</h3>
+                        <div class="mt-2 flex justify-between
+                                    text-xs text-slate-400">
+                            <span>۲۰۱۰</span>
+                            <span class="text-amber-400">★ ۸.۸</span>
+                        </div>
+                        <p class="mt-2 text-xs text-blue-400">اکشن</p>
+                    </div>
+                </a>
+            </article>
+
+        </div>
+
+        <p id="search-empty"
+           class="hidden py-10 text-center text-slate-400">
+            فیلمی با این مشخصات پیدا نشد.
+        </p>
+    </section>
+
+
+    <!-- ژانرها -->
+    <section id="genres"
+             class="border-y border-white/5 bg-[#071121]">
+
+        <div class="mx-auto max-w-7xl px-5 py-14 sm:px-8">
+            <div class="mb-7">
+                <p class="mb-2 text-xs font-bold tracking-widest
+                          text-blue-400">انتخاب با توست</p>
+                <h2 class="text-2xl font-black sm:text-3xl">
+                    ژانرهای محبوب
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 sm:grid-cols-3
+                        lg:grid-cols-6">
+
+                <a href="#latest" data-genre="اکشن"
+                   class="genre-card rounded-2xl border border-blue-400/20
+                          bg-gradient-to-br from-blue-600/20 to-[#0a1528]
+                          p-5 transition hover:-translate-y-1
+                          hover:border-blue-400/70">
+                    <span class="text-3xl">⚡</span>
+                    <h3 class="mt-4 font-bold">اکشن</h3>
+                    <p class="mt-1 text-xs text-slate-400">هیجان بی‌وقفه</p>
+                </a>
+
+                <a href="#latest" data-genre="درام"
+                   class="genre-card rounded-2xl border border-white/10
+                          bg-[#0a1528] p-5 transition
+                          hover:-translate-y-1 hover:border-blue-400/70">
+                    <span class="text-3xl">🎭</span>
+                    <h3 class="mt-4 font-bold">درام</h3>
+                    <p class="mt-1 text-xs text-slate-400">داستان‌های ماندگار</p>
+                </a>
+
+                <a href="#latest" data-genre="علمی تخیلی"
+                   class="genre-card rounded-2xl border border-white/10
+                          bg-[#0a1528] p-5 transition
+                          hover:-translate-y-1 hover:border-blue-400/70">
+                    <span class="text-3xl">🚀</span>
+                    <h3 class="mt-4 font-bold">علمی‌تخیلی</h3>
+                    <p class="mt-1 text-xs text-slate-400">فراتر از واقعیت</p>
+                </a>
+
+                <a href="#latest" data-genre="ترسناک"
+                   class="genre-card rounded-2xl border border-white/10
+                          bg-[#0a1528] p-5 transition
+                          hover:-translate-y-1 hover:border-blue-400/70">
+                    <span class="text-3xl">🌑</span>
+                    <h3 class="mt-4 font-bold">ترسناک</h3>
+                    <p class="mt-1 text-xs text-slate-400">مرز ترس و هیجان</p>
+                </a>
+
+                <a href="#latest" data-genre="کمدی"
+                   class="genre-card rounded-2xl border border-white/10
+                          bg-[#0a1528] p-5 transition
+                          hover:-translate-y-1 hover:border-blue-400/70">
+                    <span class="text-3xl">🎬</span>
+                    <h3 class="mt-4 font-bold">کمدی</h3>
+                    <p class="mt-1 text-xs text-slate-400">برای حال خوب</p>
+                </a>
+
+                <a href="#latest" data-genre="ماجراجویی"
+                   class="genre-card rounded-2xl border border-white/10
+                          bg-[#0a1528] p-5 transition
+                          hover:-translate-y-1 hover:border-blue-400/70">
+                    <span class="text-3xl">🧭</span>
+                    <h3 class="mt-4 font-bold">ماجراجویی</h3>
+                    <p class="mt-1 text-xs text-slate-400">سفر به ناشناخته‌ها</p>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- سریال‌های محبوب -->
+    <section id="series" class="mx-auto max-w-7xl px-5 py-16 sm:px-8">
+
+        <div class="mb-7 flex items-center justify-between gap-4">
+            <div>
+                <p class="mb-2 text-xs font-bold tracking-widest
+                          text-blue-400">تماشای ادامه‌دار</p>
+                <h2 class="text-2xl font-black sm:text-3xl">
+                    سریال‌های پرطرفدار
+                </h2>
+            </div>
+            <a href="#all-series"
+               class="shrink-0 text-sm text-blue-400 hover:text-blue-300">
+                مشاهده همه ←
+            </a>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+
+            <a href="#series-dark"
+               class="group relative min-h-52 overflow-hidden rounded-2xl
+                      border border-white/10 bg-[#0a1528]">
+                <img src="./images/series/dark.jpg" alt="پوستر سریال دارک"
+                     loading="lazy"
+                     class="absolute inset-0 h-full w-full object-cover
+                            opacity-60 transition duration-500
+                            group-hover:scale-105 group-hover:opacity-80">
+                <div class="absolute inset-0 bg-gradient-to-t
+                            from-[#030916] via-transparent to-transparent"></div>
+                <div class="absolute inset-x-0 bottom-0 p-4">
+                    <span class="text-xs text-blue-300">معمایی</span>
+                    <h3 class="mt-1 text-lg font-black">دارک</h3>
+                </div>
+            </a>
+
+            <a href="#series-breaking-bad"
+               class="group relative min-h-52 overflow-hidden rounded-2xl
+                      border border-white/10 bg-[#0a1528]">
+                <img src="./images/series/breaking-bad.jpg"
+                     alt="پوستر سریال بریکینگ بد" loading="lazy"
+                     class="absolute inset-0 h-full w-full object-cover
+                            opacity-60 transition duration-500
+                            group-hover:scale-105 group-hover:opacity-80">
+                <div class="absolute inset-0 bg-gradient-to-t
+                            from-[#030916] via-transparent to-transparent"></div>
+                <div class="absolute inset-x-0 bottom-0 p-4">
+                    <span class="text-xs text-blue-300">جنایی</span>
+                    <h3 class="mt-1 text-lg font-black">بریکینگ بد</h3>
+                </div>
+            </a>
+
+            <a href="#series-stranger-things"
+               class="group relative min-h-52 overflow-hidden rounded-2xl
+                      border border-white/10 bg-[#0a1528]">
+                <img src="./images/series/stranger-things.jpg"
+                     alt="پوستر سریال چیزهای عجیب" loading="lazy"
+                     class="absolute inset-0 h-full w-full object-cover
+                            opacity-60 transition duration-500
+                            group-hover:scale-105 group-hover:opacity-80">
+                <div class="absolute inset-0 bg-gradient-to-t
+                            from-[#030916] via-transparent to-transparent"></div>
+                <div class="absolute inset-x-0 bottom-0 p-4">
+                    <span class="text-xs text-blue-300">علمی‌تخیلی</span>
+                    <h3 class="mt-1 text-lg font-black">چیزهای عجیب</h3>
+                </div>
+            </a>
+
+            <a href="#series-game-of-thrones"
+               class="group relative min-h-52 overflow-hidden rounded-2xl
+                      border border-white/10 bg-[#0a1528]">
+                <img src="./images/series/game-of-thrones.jpg"
+                     alt="پوستر سریال بازی تاج‌وتخت" loading="lazy"
+                     class="absolute inset-0 h-full w-full object-cover
+                            opacity-60 transition duration-500
+                            group-hover:scale-105 group-hover:opacity-80">
+                <div class="absolute inset-0 bg-gradient-to-t
+                            from-[#030916] via-transparent to-transparent"></div>
+                <div class="absolute inset-x-0 bottom-0 p-4">
+                    <span class="text-xs text-blue-300">فانتزی</span>
+                    <h3 class="mt-1 text-lg font-black">بازی تاج‌وتخت</h3>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+
+    <!-- فوتر -->
+    <footer id="contact"
+            class="border-t border-blue-500/20 bg-[#020711]">
+
+        <div class="mx-auto grid max-w-7xl gap-10 px-6 py-12
+                    sm:grid-cols-2 lg:grid-cols-4">
+
+            <div id="about">
+                <a href="#home" class="text-2xl font-black">
+                    آما <span class="text-blue-500">مووی</span>
+                </a>
+                <p class="mt-4 max-w-xs text-sm leading-7 text-slate-400">
+                    مقصدی برای کشف فیلم‌ها و سریال‌های محبوب
+                    و تجربه‌ی دنیای سرگرمی.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="font-bold">دسترسی سریع</h3>
+                <ul class="mt-4 space-y-3 text-sm text-slate-400">
+                    <li><a href="#home" class="hover:text-blue-400">خانه</a></li>
+                    <li><a href="#latest" class="hover:text-blue-400">فیلم‌ها</a></li>
+                    <li><a href="#series" class="hover:text-blue-400">سریال‌ها</a></li>
+                    <li><a href="#genres" class="hover:text-blue-400">ژانرها</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="font-bold">راهنما</h3>
+                <ul class="mt-4 space-y-3 text-sm text-slate-400">
+                    <li><a href="#about" class="hover:text-blue-400">درباره ما</a></li>
+                    <li><a href="#contact" class="hover:text-blue-400">تماس با ما</a></li>
+                    <li><a href="#contact" class="hover:text-blue-400">حریم خصوصی</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="font-bold">همراه آما مووی</h3>
+                <p class="mt-4 text-sm leading-7 text-slate-400">
+                    تازه‌ترین پیشنهادها و خبرهای سینمایی را دنبال کن.
+                </p>
+                <a href="#home"
+                   class="mt-4 inline-block rounded-xl border
+                          border-blue-500/30 px-4 py-2 text-sm
+                          text-blue-300 transition hover:bg-blue-500/10">
+                    بازگشت به بالا ↑
+                </a>
+            </div>
+        </div>
+
+        <div class="border-t border-white/5 px-5 py-5 text-center
+                    text-xs text-slate-500">
+            © ۲۰۲۶ آما مووی | تمامی حقوق محفوظ است.
+        </div>
+    </footer>
+
+</main>
+
+
+    <!-- پنجره جداگانه جست‌وجو -->
+    <div id="search-modal"
+         hidden
+         class="search-backdrop fixed inset-0 z-[100]
+                items-start justify-center px-4 pt-[15vh]">
+
+        <div class="search-dialog w-full max-w-2xl rounded-3xl
+                    border border-blue-500/30 p-5 shadow-2xl sm:p-7">
+
+            <div class="flex items-center justify-between gap-3">
+                <h2 class="text-xl font-black">جست‌وجوی فیلم و سریال</h2>
+
+                <button id="search-close"
+                        type="button"
+                        aria-label="بستن جست‌وجو"
+                        class="flex h-10 w-10 items-center justify-center
+                               rounded-full bg-blue-500/10 text-xl
+                               text-blue-500 hover:bg-blue-500/20">
+                    ✕
+                </button>
+            </div>
+
+            <form id="search-form"
+                  class="mt-5 flex items-center gap-2 rounded-2xl
+                         border border-blue-500/30 bg-blue-500/5 p-2">
+
+                <input id="search-input"
+                       type="search"
+                       placeholder="نام فیلم یا سریال را بنویس..."
+                       class="w-full bg-transparent px-3 py-3 outline-none
+                              placeholder:text-slate-400">
+
+                <button type="submit"
+                        class="shrink-0 rounded-xl bg-blue-600
+                               px-5 py-3 font-bold text-white
+                               hover:bg-blue-500">
+                    جست‌وجو
+                </button>
+            </form>
+
+            <p id="search-message" class="mt-4 text-sm opacity-70">
+                نام فیلم مورد نظرت را وارد کن.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // تغییر تم و ذخیره انتخاب کاربر
+        const root = document.documentElement;
+        const themeToggle = document.getElementById("theme-toggle");
+        const sunIcon = document.getElementById("theme-sun");
+        const moonIcon = document.getElementById("theme-moon");
+
+        function setTheme(theme) {
+            const isDark = theme === "dark";
+
+            root.classList.toggle("dark", isDark);
+            root.classList.toggle("light", !isDark);
+
+            sunIcon.classList.toggle("hidden", isDark);
+            moonIcon.classList.toggle("hidden", !isDark);
+
+            document.querySelector('meta[name="theme-color"]')
+                .setAttribute("content", isDark ? "#070B14" : "#F8FAFC");
+
+            localStorage.setItem("ama-movie-theme", theme);
+        }
+
+        setTheme(
+            localStorage.getItem("ama-movie-theme") === "light"
+                ? "light"
+                : "dark"
+        );
+
+        themeToggle.addEventListener("click", () => {
+            setTheme(root.classList.contains("dark") ? "light" : "dark");
+        });
+
+        // منوی موبایل
+        const mobileOpen = document.getElementById("mobile-open");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        mobileOpen.addEventListener("click", () => {
+            const isOpen = mobileOpen.getAttribute("aria-expanded") === "true";
+
+            mobileMenu.hidden = isOpen;
+            mobileOpen.setAttribute("aria-expanded", String(!isOpen));
+            mobileOpen.textContent = isOpen ? "☰" : "✕";
+        });
+
+        mobileMenu.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", () => {
+                mobileMenu.hidden = true;
+                mobileOpen.setAttribute("aria-expanded", "false");
+                mobileOpen.textContent = "☰";
+            });
+        });
+
+        // پنجره جست‌وجو
+        const searchModal = document.getElementById("search-modal");
+        const searchOpen = document.getElementById("search-open");
+        const searchClose = document.getElementById("search-close");
+        const searchInput = document.getElementById("search-input");
+        const searchForm = document.getElementById("search-form");
+        const searchMessage = document.getElementById("search-message");
+
+        function openSearch() {
+            searchModal.hidden = false;
+            searchModal.classList.add("flex");
+            searchInput.focus();
+        }
+
+        function closeSearch() {
+            searchModal.hidden = true;
+            searchModal.classList.remove("flex");
+        }
+
+        searchOpen.addEventListener("click", openSearch);
+        searchClose.addEventListener("click", closeSearch);
+
+        searchModal.addEventListener("click", event => {
+            if (event.target === searchModal) closeSearch();
+        });
+
+        document.addEventListener("keydown", event => {
+            if (event.key === "Escape") closeSearch();
+        });
+
+        searchForm.addEventListener("submit", event => {
+            event.preventDefault();
+
+            const query = searchInput.value.trim();
+
+            if (!query) {
+                searchMessage.textContent = "ابتدا نام فیلم یا سریال را وارد کن.";
+                searchInput.focus();
+                return;
+            }
+
+            filterMovies(query);
+            inlineSearchInput.value = query;
+            closeSearch();
+            document.getElementById("latest").scrollIntoView({
+                behavior: "smooth"
+            });
+        });
+
+          const inlineSearchForm = document.getElementById("movie-search");
+          const inlineSearchInput = document.getElementById("movie-search-input");
+          const movieCards = [...document.querySelectorAll(".movie-card")];
+          const emptyMessage = document.getElementById("search-empty");
+
+    function filterMovies(query) {
+        const value = query.trim().toLowerCase();
+        let visibleCount = 0;
+
+        movieCards.forEach(card => {
+            const title = (card.dataset.title || "").toLowerCase();
+            const matches = title.includes(value);
+
+            card.classList.toggle("hidden", !matches);
+
+            if (matches) visibleCount++;
+        });
+
+        emptyMessage.classList.toggle("hidden", visibleCount > 0);
+    }
+
+    inlineSearchForm.addEventListener("submit", event => {
+        event.preventDefault();
+        filterMovies(inlineSearchInput.value);
+        document.getElementById("latest").scrollIntoView({
+            behavior: "smooth"
+        });
+    });
+
+    inlineSearchInput.addEventListener("input", () => {
+        filterMovies(inlineSearchInput.value);
+    });
+
+    document.querySelectorAll(".genre-card").forEach(genre => {
+        genre.addEventListener("click", () => {
+            inlineSearchInput.value = genre.dataset.genre;
+            filterMovies(inlineSearchInput.value);
+        });
+    });
+    </script>
+    
+
+</body>
+</html>
