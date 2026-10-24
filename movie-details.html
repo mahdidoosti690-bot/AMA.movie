@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#070B14">
+<title>جزئیات فیلم | آما مووی</title>
+<link rel="stylesheet" href="./output.css">
+<script src="./tailwindcss.js"></script>
+<style>
+@font-face{font-family:Vazirmatn;src:url('./font/yekan-regular.woff') format('woff');font-display:swap}
+:root{color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;font-family:Vazirmatn,sans-serif;background:#070b14;color:#f8fafc}
+a{color:inherit;text-decoration:none}button,input,textarea{font:inherit}button{cursor:pointer}
+[hidden]{display:none!important}
+#site-header{position:absolute;top:0;left:0;right:0;z-index:50;padding:1rem 1rem 0;border-bottom:1px solid transparent;transition:.25s}
+.header-shell{max-width:1280px;margin:auto;display:grid;grid-template-columns:1fr minmax(180px,420px) 1fr;align-items:center;gap:1rem;min-height:64px}
+#site-header.is-scrolled{position:fixed;padding-top:.65rem;padding-bottom:.65rem;border-bottom-color:#94a3b844;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 10px 35px #0002}
+html.dark #site-header.is-scrolled{background:#070b14bb}html.light #site-header.is-scrolled{background:#f8fafccc}
+.header-control{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;flex-shrink:0;border-radius:999px;background:#3b82f61f;color:#60a5fa;border:1px solid #60a5fa22;transition:.2s}
+.header-control:hover{background:#3b82f63d;transform:translateY(-1px)}
+.header-search{display:flex;align-items:center;gap:.6rem;width:100%;border:1px solid #94a3b84a;border-radius:9999px;padding:.45rem .6rem .45rem 1rem;background:#ffffff18;backdrop-filter:blur(8px)}
+.header-search input{min-width:0;flex:1;background:transparent;outline:none;color:inherit}
+#mobile-menu{max-width:1280px;margin:12px auto 0;border:1px solid #3b82f644;border-radius:24px;padding:16px;background:#071121f5;box-shadow:0 20px 55px #0007;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+#mobile-menu[hidden]{display:none!important}.menu-link{padding:12px;border-radius:12px;color:#cbd5e1}.menu-link:hover{background:#3b82f61f;color:#60a5fa}
+.detail-backdrop{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:-3;opacity:.38;filter:saturate(1.05) blur(0px)}
+body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:linear-gradient(180deg,#070b1480 0%,#070b14bd 46%,#070b14f2 82%),linear-gradient(90deg,#070b14cc,#070b1466)}
+html.light body{background:#f8fafc;color:#0f172a}html.light body:before{background:linear-gradient(180deg,#f8fafc88 0%,#f8fafcd9 55%,#f8fafcf5 100%)}
+html.light .panel,html.light .download-card,html.light .comment-card{background:#fff!important;border-color:#cbd5e1!important;color:#0f172a}
+html.light .muted{color:#334155!important}html.light .pill{background:#eff6ff;color:#1e293b;border-color:#cbd5e1}html.light .version-tab{background:#f1f5f9;color:#1e293b;border-color:#cbd5e1}html.light .quality-row{background:#f8fafc;border-color:#cbd5e1}html.light .download-card{background:#f8fafc!important}html.light .secondary{background:#e2e8f0;color:#0f172a;border-color:#94a3b8}html.light .comment-card{background:#fff!important;color:#0f172a}html.light .menu-link{color:#334155}html.light #mobile-menu{background:#fffffff5}
+html.light .header-search{background:#ffffffc9;border-color:#94a3b8}html.light .header-search input{color:#0f172a}
+.page-wrap{width:min(1180px,92%);margin-inline:auto}
+.panel{background:#0b1425cc;border:1px solid #ffffff16;border-radius:22px;backdrop-filter:blur(12px)}
+.pill{display:inline-flex;align-items:center;gap:6px;border:1px solid #64748b55;background:#0f172a9c;border-radius:999px;padding:7px 12px;color:#dbeafe;font-size:13px}
+.action{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:12px;padding:11px 16px;font-weight:800;transition:.2s}
+.primary{background:#2563eb;color:white}.primary:hover{background:#1d4ed8;transform:translateY(-1px)}
+.secondary{border:1px solid #64748b77;background:#0f172a88;color:inherit}.secondary:hover{border-color:#60a5fa;background:#1e293b}
+.section-title{font-size:clamp(19px,2.5vw,25px);font-weight:900;border-right:4px solid #3b82f6;padding-right:12px}
+.poster{width:100%;max-width:245px;aspect-ratio:2/3;object-fit:cover;border-radius:18px;border:1px solid #64748b88;box-shadow:0 22px 60px #0008}
+.cast-row,.related-row{display:flex;gap:15px;overflow-x:auto;scrollbar-width:none;scroll-behavior:smooth;padding:6px 2px 14px}.cast-row::-webkit-scrollbar,.related-row::-webkit-scrollbar{display:none}
+.cast-card{flex:0 0 120px;text-align:center;border:1px solid transparent;border-radius:16px;padding:8px;cursor:pointer}.cast-card:hover,.cast-card[aria-expanded="true"]{background:#2563eb18;border-color:#60a5fa66}
+.cast-avatar{width:94px;height:94px;border-radius:50%;object-fit:cover;margin:auto;border:1px solid #64748b88;background:#172033;display:flex;align-items:center;justify-content:center;font-size:30px}
+.related-card{flex:0 0 155px;width:155px;display:block;cursor:pointer;color:inherit}.related-card img{width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:14px;border:1px solid #334155;transition:.2s}.related-card:hover img{transform:translateY(-4px);border-color:#60a5fa}
+.row-arrow{position:absolute;top:42%;z-index:2;width:42px;height:42px;border-radius:50%;background:#0b1425e8;border:1px solid #60a5fa66;color:white;font-size:26px;box-shadow:0 6px 22px #0005}
+.row-arrow.left{left:-12px}.row-arrow.right{right:-12px}
+.version-tab{border:1px solid #334155;border-radius:14px;padding:14px;background:#111c2e;color:#cbd5e1;font-weight:900}.version-tab[aria-selected="true"]{background:#1d4ed8;border-color:#60a5fa;color:#fff}
+.download-card{background:#0a1220;border:1px solid #29384e;border-radius:16px;padding:18px}
+.quality-row{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:9px;border:1px solid #334155;border-radius:12px;padding:10px 12px;background:#111c2e}
+.quality-row small{display:block;color:#94a3b8;font-size:11px;margin-top:3px}
+.quality-action{border-radius:9px;padding:8px 10px;font-size:12px;font-weight:800;white-space:nowrap}.download-action{background:#2563eb;color:white}.play-action{background:#0f766e;color:white}
+.notice{border:1px dashed #64748b88;border-radius:12px;padding:12px;color:#cbd5e1;font-size:13px;line-height:1.8}
+.modal{position:fixed;inset:0;z-index:80;background:#020617eF;display:none;align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.modal-box{width:min(650px,100%);border-radius:20px;padding:24px;background:#0b1425;border:1px solid #334155;text-align:center;color:white}
+@media(min-width:768px){.desktop-arrows{display:block}}@media(max-width:767px){.desktop-arrows{display:none}.header-shell{grid-template-columns:auto minmax(80px,1fr) auto;gap:.45rem}.header-control{width:36px;height:36px}#site-logo-text{display:none}.header-search{padding:.35rem .45rem}.header-search button{padding:.45rem .6rem!important;font-size:12px}.header-shell .header-search input{font-size:12px}.header-shell .header-search button{display:none}#mobile-menu{grid-template-columns:repeat(2,minmax(0,1fr));margin-inline:4px}.detail-top{padding-top:130px}.quality-row{grid-template-columns:minmax(0,1fr) auto;gap:7px}.quality-row .play-action{grid-column:2}.quality-row .download-action{grid-column:2}.quality-row .quality-label{grid-row:1/3}.poster{max-width:190px}.hero-grid{grid-template-columns:1fr}.poster-side{order:0}.story-side{order:1}}
+
+/* نتایج جست‌وجو: کارت‌های عمودی و خوانا در هر دو تم */
+.search-backdrop{background:rgba(2,6,23,.78);backdrop-filter:blur(9px);overflow-y:auto}
+.search-dialog{background:#0b1425;color:#f8fafc;max-height:78vh;overflow:auto}
+.search-results{display:flex;flex-direction:column;gap:12px;margin-top:14px;max-height:45vh;overflow-y:auto}
+.search-result-card{display:flex;align-items:center;gap:14px;padding:10px;border:1px solid #334155;border-radius:16px;background:#111c2e;transition:.2s;text-align:right}
+.search-result-card:hover{border-color:#3b82f6;transform:translateY(-1px)}
+.search-result-card img{width:76px;height:108px;flex-shrink:0;object-fit:cover;border-radius:10px;background:#1e293b}
+.result-meta{font-size:12px;color:#94a3b8;margin-top:6px;line-height:1.8}
+.actor-film-card{flex:0 0 155px;width:155px;border:1px solid #334155;border-radius:15px;padding:8px;background:#111c2e;display:block}
+.actor-film-card img{width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:10px}
+.version-tab{min-height:72px;transition:.2s}
+#censored-tab{background:#075985;color:#fff;border-color:#38bdf8}
+#uncensored-tab{background:#1596d1;color:#fff;border-color:#fb7185}
+#censored-tab[aria-selected="true"]{background:#0284c7;box-shadow:0 0 0 3px #38bdf855}
+#uncensored-tab[aria-selected="true"]{background:#e11d48;box-shadow:0 0 0 3px #fb718555}
+.download-card[data-tone="dubbed"]{border-color:#0ea5e9;background:#082f49}
+.download-card[data-tone="subtitled"]{border-color:#a78bfa;background:#2e1065}
+.quality-row{border-left:4px solid #38bdf8}
+.download-card[data-tone="subtitled"] .quality-row{border-left-color:#a78bfa}
+html.light .search-dialog{background:#fff;color:#0f172a;border-color:#cbd5e1}
+html.light .search-result-card,html.light .actor-film-card{background:#f1f5f9;color:#0f172a;border-color:#cbd5e1}
+html.light .result-meta{color:#475569}
+html.light .download-card[data-tone="dubbed"]{background:#e0f2fe!important;border-color:#0284c7!important;color:#0c4a6e}
+html.light .download-card[data-tone="subtitled"]{background:#f3e8ff!important;border-color:#7c3aed!important;color:#4c1d95}
+html.light .quality-row{background:#fff;border-color:#7dd3fc}
+html.light .download-card[data-tone="subtitled"] .quality-row{border-color:#c4b5fd}
+
+</style>
+</head>
+<body>
+<img id="page-backdrop" class="detail-backdrop" src="./images/movies/dune.jpg" alt="">
+ <header id="site-header">
+            <div class="header-shell">
+                <!-- سمت راست: همبرگری، تم و پروفایل -->
+                <div class="flex items-center justify-self-start gap-2">
+                    <button id="mobile-open" type="button" aria-label="باز کردن منو"
+                            aria-expanded="false" class="header-control text-xl">☰</button>
+                    <button id="theme-toggle" type="button" aria-label="تغییر تم سایت"
+                            class="header-control">
+                        <svg id="theme-sun" class="hidden h-5 w-5" viewBox="0 0 24 24"
+                             fill="none" stroke="currentColor" stroke-width="1.8">
+                            <circle cx="12" cy="12" r="4"/>
+                            <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/>
+                        </svg>
+                        <svg id="theme-moon" class="h-5 w-5" viewBox="0 0 24 24"
+                             fill="none" stroke="currentColor" stroke-width="1.8">
+                            <path d="M20.9 13A9 9 0 0 1 11 3.1 9 9 0 1 0 20.9 13Z"/>
+                        </svg>
+                    </button>
+                    <a href="./index.html#login" aria-label="اطلاعات فردی و ورود"
+                       title="حساب کاربری"
+                       class="header-control overflow-hidden border border-blue-400/20">
+                        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="1.7">
+                            <circle cx="12" cy="8" r="4"/>
+                            <path d="M4 21a8 8 0 0 1 16 0"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- وسط: سرچ تمام‌گرد -->
+                <form id="header-search-form" class="header-search justify-self-center">
+                    <svg class="h-5 w-5 shrink-0 text-blue-400" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/>
+                    </svg>
+                    <input id="header-search-input" type="search"
+                           aria-label="جست‌وجوی فیلم و سریال"
+                           placeholder="جست‌وجوی فیلم و سریال...">
+                    <button type="submit"
+                            class="rounded-full bg-blue-600 px-4 py-2 text-sm font-bold text-white transition hover:bg-blue-500">
+                        جست‌وجو
+                    </button>
+                </form>
+
+                <!-- سمت چپ: آرم سایت -->
+                <a id="site-logo" href="./index.html#home"
+                   class="flex items-center justify-self-end gap-2 text-lg font-black sm:text-2xl">
+                    <span id="site-logo-text" class="whitespace-nowrap">آما <span class="text-blue-500">مووی</span></span>
+                    <img src="./images/ChatGPT Image Jun 20, 2026, 03_14_11 PM.png"
+                         alt="لوگوی آما مووی"
+                         class="h-11 w-11 shrink-0 rounded-full object-contain">
+                </a>
+            </div>
+
+            <!-- تمام گزینه‌های ناوبری داخل منوی همبرگری -->
+            <nav id="mobile-menu" hidden
+                 class="mx-auto mt-3 grid max-w-7xl grid-cols-2 gap-2 rounded-3xl border border-blue-500/20 bg-slate-950/95 p-4 text-white shadow-2xl backdrop-blur-xl sm:grid-cols-3">
+                <a href="./index.html#home" class="nav-label rounded-xl p-3 transition hover:bg-blue-500/10">⌂　خانه</a>
+                <a href="./index.html#latest" class="nav-label rounded-xl p-3 transition hover:bg-blue-500/10">🎬　فیلم‌ها</a>
+                <a href="./index.html#series" class="nav-label rounded-xl p-3 transition hover:bg-blue-500/10">📺　سریال‌ها</a>
+                <a href="./index.html#genres" class="nav-label rounded-xl p-3 transition hover:bg-blue-500/10">▦　ژانرها</a>
+                <a href="./index.html#latest" class="nav-label rounded-xl p-3 transition hover:bg-blue-500/10">★　محبوب‌ها</a>
+                <a href="./index.html#favorites" id="favorites-link" class="nav-label rounded-xl p-3 transition hover:bg-blue-500/10">♡　علاقه‌مندی‌ها</a>
+                <a href="./index.html#about" class="nav-label rounded-xl p-3 transition hover:bg-blue-500/10">ⓘ　درباره ما</a>
+                <a href="./index.html#contact" class="nav-label rounded-xl p-3 transition hover:bg-blue-500/10">✉　تماس با ما</a>
+                <a href="./index.html#login" class="nav-label rounded-xl p-3 transition hover:bg-blue-500/10">👤　حساب کاربری / ورود</a>
+            </nav>
+        </header>
+
+
+<main class="detail-top pt-32 pb-16">
+  <section class="page-wrap">
+    <div class="mb-5 flex flex-wrap gap-2"><a href="./index.html" class="pill">← بازگشت به صفحه اصلی</a><span class="pill">🎬 آما مووی</span><span class="pill" id="kind-pill">فیلم سینمایی</span></div>
+    <div class="hero-grid grid grid-cols-[minmax(0,1fr)_245px] gap-8 items-start">
+      <div class="story-side min-w-0">
+        <p class="text-sm font-bold text-blue-400 mb-2">معرفی فیلم</p>
+        <h1 id="movie-title" class="text-4xl sm:text-5xl font-black mb-2">تلماسه</h1>
+        <p id="movie-subtitle" class="muted text-lg mb-5">Dune: Part Two | ۲۰۲۴</p>
+        <div class="flex flex-wrap gap-2 mb-5"><span class="pill" id="rating">★ ۸.۵ / ۱۰</span><span class="pill" id="duration">⏱ ۲ ساعت و ۴۶ دقیقه</span></div>
+        <h2 class="text-xl font-black mb-3">خلاصه داستان</h2>
+        <p id="synopsis" class="muted leading-8 text-base sm:text-lg max-w-3xl">پل آتریدیس برای انتقام از توطئه‌گران نابودی خانواده‌اش، در کنار چانی و فرمن‌ها قرار می‌گیرد.</p>
+        <div class="mt-6 flex flex-wrap gap-3"><button id="trailer-btn" class="action primary">▶ تماشای تریلر</button><button id="mark-watched" class="action secondary">✓ ثبت در درحال تماشا</button></div>
+      </div>
+      <aside class="poster-side panel p-4 text-center">
+        <img id="poster" class="poster mx-auto" src="./images/movies/dune.jpg" alt="پوستر فیلم">
+        <button id="favorite-btn" class="action secondary mt-4 w-full" aria-pressed="false">♡ افزودن به علاقه‌مندی‌ها</button>
+        <p id="favorite-status" class="muted text-xs mt-2">فیلم را به فهرست علاقه‌مندی‌ها اضافه کن.</p>
+      </aside>
+    </div>
+    <section class="panel mt-8 p-5 sm:p-7">
+      <h2 class="section-title mb-5">جزئیات فیلم</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+        <div><p class="muted mb-1">ژانر</p><strong id="info-genre">علمی‌تخیلی، ماجراجویی</strong></div>
+        <div><p class="muted mb-1">سال ساخت</p><strong id="info-year">۲۰۲۴</strong></div>
+        <div><p class="muted mb-1">کارگردان</p><strong id="director">دنی ویلنوو</strong></div>
+        <div><p class="muted mb-1">کشور سازنده</p><strong id="country">آمریکا، کانادا</strong></div>
+        <div><p class="muted mb-1">زبان اصلی</p><strong id="language">انگلیسی</strong></div>
+        
+        <div><p class="muted mb-1">امتیاز کاربران</p><strong id="rating-info" class="text-amber-400">۸.۵ از ۱۰</strong></div>
+        <div><p class="muted mb-1">مدت زمان</p><strong id="duration-info">۱۶۶ دقیقه</strong></div>
+      </div>
+    </section>
+  </section>
+
+  <section class="page-wrap mt-12">
+    <div class="flex items-center justify-between gap-3 mb-4"><h2 class="section-title">بازیگران و عوامل</h2><span class="muted text-xs">روی چهره هر بازیگر بزن</span></div>
+    <div id="cast-row" class="cast-row">
+      <button class="cast-card" data-actor="timothee" aria-expanded="false"><span class="cast-avatar">🎭</span><span class="block font-bold mt-3">تیموتی شالامه</span><span class="muted text-xs block mt-1">بازیگر</span></button>
+      <button class="cast-card" data-actor="zendaya" aria-expanded="false"><span class="cast-avatar">🎬</span><span class="block font-bold mt-3">زندایا</span><span class="muted text-xs block mt-1">بازیگر</span></button>
+      <button class="cast-card" data-actor="rebecca" aria-expanded="false"><span class="cast-avatar">🎞️</span><span class="block font-bold mt-3">ربکا فرگوسن</span><span class="muted text-xs block mt-1">بازیگر</span></button>
+      <button class="cast-card" data-actor="jason" aria-expanded="false"><span class="cast-avatar">🎥</span><span class="block font-bold mt-3">جیسون موموآ</span><span class="muted text-xs block mt-1">بازیگر</span></button>
+      <button class="cast-card" data-actor="director" aria-expanded="false"><span class="cast-avatar">🎬</span><span class="block font-bold mt-3">دنی ویلنوو</span><span class="muted text-xs block mt-1">کارگردان</span></button>
+    </div>
+    <div id="actor-film-panel" class="panel mt-3 p-5" hidden><h3 id="actor-film-title" class="font-black text-lg mb-3">فیلم‌های این هنرمند</h3><div id="actor-film-list" class="flex flex-wrap gap-2"></div></div>
+  </section>
+
+  <section class="page-wrap mt-12" id="download-section">
+    <div class="flex items-center justify-between flex-wrap gap-3 mb-5"><h2 class="section-title">دریافت و تماشای فیلم</h2><span class="pill">کیفیت‌های 480p، 720p و 1080p</span></div>
+    <div class="panel p-4 sm:p-6">
+      <div class="grid grid-cols-2 gap-3 mb-5" role="tablist" aria-label="انتخاب نسخه">
+        <button class="version-tab" id="censored-tab" role="tab" aria-selected="true" aria-controls="censored-panel">نسخه سانسورشده</button>
+        <button class="version-tab" id="uncensored-tab" role="tab" aria-selected="false" aria-controls="uncensored-panel">نسخه بدون سانسور</button>
+      </div>
+      <div id="censored-panel" role="tabpanel" aria-labelledby="censored-tab" class="space-y-5">
+        <article class="download-card" data-tone="dubbed"><div class="flex items-center gap-3 mb-4"><span class="text-2xl">🎙️</span><div><h3 class="font-black text-lg">دوبله فارسی</h3><p class="muted text-xs">نسخه سانسورشده با دوبله فارسی</p></div></div><div class="space-y-3" data-download-list="censored-dubbed"></div></article>
+        <article class="download-card" data-tone="subtitled"><div class="flex items-center gap-3 mb-4"><span class="text-2xl">💬</span><div><h3 class="font-black text-lg">زیرنویس فارسی</h3><p class="muted text-xs">نسخه سانسورشده با زیرنویس فارسی</p></div></div><div class="space-y-3" data-download-list="censored-subtitled"></div></article>
+      </div>
+      <div id="uncensored-panel" role="tabpanel" aria-labelledby="uncensored-tab" hidden class="space-y-5">
+        <article class="download-card" data-tone="dubbed"><div class="flex items-center gap-3 mb-4"><span class="text-2xl">🎙️</span><div><h3 class="font-black text-lg">دوبله فارسی</h3><p class="muted text-xs">نسخه بدون سانسور با دوبله فارسی</p></div></div><div class="space-y-3" data-download-list="uncensored-dubbed"></div></article>
+        <article class="download-card" data-tone="subtitled"><div class="flex items-center gap-3 mb-4"><span class="text-2xl">💬</span><div><h3 class="font-black text-lg">زیرنویس فارسی</h3><p class="muted text-xs">نسخه بدون سانسور با زیرنویس فارسی</p></div></div><div class="space-y-3" data-download-list="uncensored-subtitled"></div></article>
+      </div>
+      <p id="download-notice" class="notice mt-5" role="status">نسخه سانسورشده در ابتدا انتخاب شده است. لینک‌های واقعی دانلود و پخش را برای هر فیلم باید ثبت کنی.</p>
+    </div>
+  </section>
+
+  <section class="page-wrap mt-12">
+    <div class="flex items-center justify-between gap-3 mb-5"><h2 class="section-title">فیلم‌های مرتبط</h2><a href="./index.html#latest" class="text-blue-400 text-sm">همه فیلم‌ها ←</a></div>
+    <div class="relative">
+      <button class="row-arrow left desktop-arrows" data-scroll="-1" aria-label="فیلم‌های قبلی">‹</button>
+      <div id="related-row" class="related-row">
+        <a class="related-card" href="./movie-details.html?movie=interstellar"><img src="./images/movies/interstellar.jpg" alt="میان‌ستاره‌ای"><p class="font-bold mt-3">میان‌ستاره‌ای</p><p class="muted text-xs mt-1">۲۰۱۴ · علمی‌تخیلی</p></a>
+        <a class="related-card" href="./movie-details.html?movie=inception"><img src="./images/movies/inception.jpg" alt="تلقین"><p class="font-bold mt-3">تلقین</p><p class="muted text-xs mt-1">۲۰۱۰ · علمی‌تخیلی</p></a>
+        <a class="related-card" href="./movie-details.html?movie=batman"><img src="./images/movies/batman.jpg" alt="بتمن"><p class="font-bold mt-3">بتمن</p><p class="muted text-xs mt-1">۲۰۲۲ · اکشن</p></a>
+        <a class="related-card" href="./movie-details.html?movie=john-wick"><img src="./images/movies/john-wick.jpg" alt="جان ویک"><p class="font-bold mt-3">جان ویک</p><p class="muted text-xs mt-1">۲۰۱۴ · اکشن</p></a>
+        <a class="related-card" href="./movie-details.html?movie=wolf"><img src="./images/movies/wolf.jpg" alt="گرگ وال استریت"><p class="font-bold mt-3">گرگ وال استریت</p><p class="muted text-xs mt-1">۲۰۱۳ · درام</p></a>
+      </div>
+      <button class="row-arrow right desktop-arrows" data-scroll="1" aria-label="فیلم‌های بعدی">›</button>
+    </div>
+  </section>
+
+  <section class="page-wrap mt-12 mb-20">
+    <h2 class="section-title mb-5">نظرات کاربران</h2>
+    <div class="grid lg:grid-cols-[minmax(0,1fr)_300px] gap-5">
+      <div><div id="comments-list" class="space-y-3"><p class="panel p-5 muted">هنوز نظری ثبت نشده؛ اولین نفر باش.</p></div></div>
+      <form id="comment-form" class="panel p-5 h-fit">
+        <h3 class="font-black text-lg mb-4">ثبت نظر</h3>
+        <label class="block text-sm mb-2" for="comment-name">نام نمایشی</label><input id="comment-name" required maxlength="40" class="w-full rounded-xl border border-slate-600 bg-slate-950/50 p-3 mb-4" placeholder="مثلاً سینمادوست">
+        <label class="block text-sm mb-2" for="comment-text">نظر شما</label><textarea id="comment-text" required maxlength="1000" rows="4" class="w-full rounded-xl border border-slate-600 bg-slate-950/50 p-3 mb-4" placeholder="نظرت درباره این فیلم..."></textarea>
+        <button class="action primary w-full" type="submit">ثبت نظر</button><p class="muted text-xs leading-6 mt-3">نظرها فعلاً فقط در همین مرورگر ذخیره می‌شوند و تا اتصال به بک‌اند عمومی نیستند.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+   <!-- پنجره جداگانه جست‌وجو -->
+    <div id="search-modal"
+         hidden
+         class="search-backdrop fixed inset-0 z-[100]
+                items-start justify-center px-4 pt-[15vh]">
+
+        <div class="search-dialog w-full max-w-2xl rounded-3xl
+                    border border-blue-500/30 p-5 shadow-2xl sm:p-7">
+
+            <div class="flex items-center justify-between gap-3">
+                <h2 class="text-xl font-black">جست‌وجوی فیلم و سریال</h2>
+
+                <button id="search-close"
+                        type="button"
+                        aria-label="بستن جست‌وجو"
+                        class="flex h-10 w-10 items-center justify-center
+                               rounded-full bg-blue-500/10 text-xl
+                               text-blue-500 hover:bg-blue-500/20">
+                    ✕
+                </button>
+            </div>
+
+            <form id="search-form"
+                  class="mt-5 flex items-center gap-2 rounded-2xl
+                         border border-blue-500/30 bg-blue-500/5 p-2">
+
+                <input id="search-input"
+                       type="search"
+                       placeholder="نام فیلم یا سریال را بنویس..."
+                       class="w-full bg-transparent px-3 py-3 outline-none
+                              placeholder:text-slate-400">
+
+                <button type="submit"
+                        class="shrink-0 rounded-xl bg-blue-600
+                               px-5 py-3 font-bold text-white
+                               hover:bg-blue-500">
+                    جست‌وجو
+                </button>
+            </form>
+
+            <p id="search-message" class="mt-4 text-sm opacity-70" role="status" aria-live="polite">
+                نام فیلم یا سریال را وارد کن.
+            </p>
+            <div id="search-results" class="search-results" aria-label="نتایج جست‌وجو"></div>
+        </div>
+    </div>
+<footer class="border-t border-slate-700/50 bg-slate-950/70 px-5 py-8 text-center">
+  <a href="./index.html#home" class="text-xl font-black">آما <span class="text-blue-400">مووی</span></a>
+  <p class="muted text-sm mt-3">خانه‌ای برای دوست‌داران فیلم و سریال</p>
+  <div class="flex justify-center flex-wrap gap-5 text-sm mt-4"><a href="./index.html#latest">فیلم‌ها</a><a href="./index.html#series">سریال‌ها</a><a href="./index.html#about">درباره ما</a><a href="./index.html#contact">تماس با ما</a></div>
+  <p class="muted text-xs mt-5">© آما مووی · تمامی حقوق محفوظ است</p>
+</footer>
+
+<div id="trailer-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="trailer-title"><div class="modal-box"><button id="close-trailer" class="float-left rounded-lg border border-slate-700 px-3 py-1" aria-label="بستن">✕</button><h2 id="trailer-title" class="text-xl font-black mb-4">تریلر فیلم</h2><div class="rounded-xl border border-slate-700 bg-slate-950 p-8"><div class="text-5xl mb-3">▶</div><p>هنوز آدرس واقعی تریلر برای این فیلم ثبت نشده است.</p></div></div></div>
+<div id="stream-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="stream-title"><div class="modal-box"><button id="close-stream" class="float-left rounded-lg border border-slate-700 px-3 py-1" aria-label="بستن">✕</button><h2 id="stream-title" class="text-xl font-black mb-4">پخش آنلاین</h2><p id="stream-message" class="leading-8">لینک پخش آنلاین این نسخه هنوز ثبت نشده است.</p><button id="stream-ok" class="action primary mt-5">متوجه شدم</button></div></div>
+
+<script>
+const movies={
+ dune:{title:'تلماسه',subtitle:'Dune: Part Two',year:'۲۰۲۴',yearLatin:'2024',genre:'علمی‌تخیلی، ماجراجویی',genreShort:'علمی‌تخیلی',rating:'۸.۵',duration:'۲ ساعت و ۴۶ دقیقه',durationInfo:'۱۶۶ دقیقه',age:'',country:'آمریکا، کانادا',language:'انگلیسی',poster:'./images/movies/dune.jpg',synopsis:'پل آتریدیس برای انتقام از توطئه‌گران نابودی خانواده‌اش، در کنار چانی و فرمن‌ها قرار می‌گیرد. او میان عشق و سرنوشت دشوارش باید تصمیمی بگیرد که آینده‌ی تمام جهان را تغییر می‌دهد.',director:'دنی ویلنوو',cast:['timothee','zendaya','rebecca','jason','director']},
+ batman:{title:'بتمن',subtitle:'The Batman',year:'۲۰۲۲',yearLatin:'2022',genre:'اکشن، جنایی، درام',genreShort:'اکشن',rating:'۷.۸',duration:'۲ ساعت و ۵۶ دقیقه',durationInfo:'۱۷۶ دقیقه',age:'',country:'آمریکا',language:'انگلیسی',poster:'./images/movies/batman.jpg',synopsis:'بروس وین در دومین سال فعالیتش به‌عنوان بتمن، با پرونده‌ای تاریک روبه‌رو می‌شود که فساد گسترده شهر گاتهام را آشکار می‌کند.',director:'مت ریوز',cast:['robert','zoe','paul','director']},
+ interstellar:{title:'میان‌ستاره‌ای',subtitle:'Interstellar',year:'۲۰۱۴',yearLatin:'2014',genre:'علمی‌تخیلی، درام',genreShort:'علمی‌تخیلی',rating:'۸.۶',duration:'۲ ساعت و ۴۹ دقیقه',durationInfo:'۱۶۹ دقیقه',age:'',country:'آمریکا، بریتانیا',language:'انگلیسی',poster:'./images/movies/interstellar.jpg',synopsis:'گروهی از کاوشگران از راه کرم‌چاله‌ای سفر می‌کنند تا برای آینده بشر، خانه‌ای تازه پیدا کنند؛ سفری که زمان و فاصله را به چالشی شخصی تبدیل می‌کند.',director:'کریستوفر نولان',cast:['matthew','anne','jessica','director']},
+ 'john-wick':{title:'جان ویک',subtitle:'John Wick',year:'۲۰۱۴',yearLatin:'2014',genre:'اکشن، جنایی، هیجان‌انگیز',genreShort:'اکشن',rating:'۷.۴',duration:'۱ ساعت و ۴۱ دقیقه',durationInfo:'۱۰۱ دقیقه',age:'',country:'آمریکا',language:'انگلیسی',poster:'./images/movies/john-wick.jpg',synopsis:'یک قاتل بازنشسته پس از رخدادی خشونت‌آمیز، دوباره به دنیای زیرزمینی‌ای بازمی‌گردد که زمانی از آن فاصله گرفته بود.',director:'چاد استاهلسکی',cast:['keanu','ian','director']},
+ wolf:{title:'گرگ وال استریت',subtitle:'The Wolf of Wall Street',year:'۲۰۱۳',yearLatin:'2013',genre:'درام، زندگی‌نامه، کمدی سیاه',genreShort:'درام',rating:'۸.۲',duration:'۳ ساعت',durationInfo:'۱۸۰ دقیقه',age:'',country:'آمریکا',language:'انگلیسی',poster:'./images/movies/wolf.jpg',synopsis:'داستان صعود و سقوط یک کارگزار بورس که ثروت، جاه‌طلبی و افراط، زندگی حرفه‌ای و شخصی‌اش را زیرورو می‌کنند.',director:'مارتین اسکورسیزی',cast:['leonardo','jonah','director']},
+ inception:{title:'تلقین',subtitle:'Inception',year:'۲۰۱۰',yearLatin:'2010',genre:'اکشن، علمی‌تخیلی، هیجان‌انگیز',genreShort:'علمی‌تخیلی',rating:'۸.۸',duration:'۲ ساعت و ۲۸ دقیقه',durationInfo:'۱۴۸ دقیقه',age:'',country:'آمریکا، بریتانیا',language:'انگلیسی',poster:'./images/movies/inception.jpg',synopsis:'دزدی حرفه‌ای که با ورود به رویاهای دیگران اسرار می‌رباید، مأموریتی ناممکن می‌پذیرد: کاشتن یک ایده به‌جای دزدیدن آن.',director:'کریستوفر نولان',cast:['leonardo','joseph','ellen','director']}
+};
+const key=new URLSearchParams(location.search).get('movie')||'dune';
+const actorNames={timothee:'تیموتی شالامه',zendaya:'زندایا',rebecca:'ربکا فرگوسن',jason:'جیسون موموآ',director:'کارگردان',robert:'رابرت پتینسون',zoe:'زویی کراویتز',paul:'پل دانو',matthew:'متیو مک‌کانهی',anne:'آن هتوی',jessica:'جسیکا چستین',keanu:'کیانو ریوز',ian:'ایان مک‌شین',leonardo:'لئوناردو دی‌کاپریو',jonah:'جونا هیل',joseph:'جوزف گوردون لویت',ellen:'الن پیج'};
+const movie=movies[key]||movies.dune;
+document.title=movie.title+' | آما مووی';
+const set=(id,value)=>{const el=document.getElementById(id);if(el)el.textContent=value};
+set('movie-title',movie.title);set('movie-subtitle',movie.subtitle+' | '+movie.year);set('rating','★ '+movie.rating+' / ۱۰');set('duration','⏱ '+movie.duration);set('synopsis',movie.synopsis);set('info-genre',movie.genre);set('info-year',movie.year);set('director',movie.director);set('country',movie.country);set('language',movie.language);set('rating-info',movie.rating+' از ۱۰');set('duration-info',movie.durationInfo);
+document.getElementById('poster').src=movie.poster;document.getElementById('poster').alt='پوستر '+movie.title;document.getElementById('page-backdrop').src=movie.poster;set('trailer-title','تریلر '+movie.title);
+const fav=document.getElementById('favorite-btn'),favStatus=document.getElementById('favorite-status');
+function readList(name){try{return JSON.parse(localStorage.getItem(name)||'[]')}catch{return []}}
+function updateFav(){const active=readList('ama-movie-favorites').includes(key);fav.setAttribute('aria-pressed',String(active));fav.textContent=active?'♥ در علاقه‌مندی‌ها':'♡ افزودن به علاقه‌مندی‌ها';favStatus.textContent=active?'این فیلم در فهرست علاقه‌مندی‌هایت ذخیره شده است.':'فیلم را به فهرست علاقه‌مندی‌ها اضافه کن.'}
+updateFav();
+fav.addEventListener('click',()=>{let list=readList('ama-movie-favorites');list=list.includes(key)?list.filter(x=>x!==key):[...list,key];localStorage.setItem('ama-movie-favorites',JSON.stringify(list));updateFav()});
+document.getElementById('mark-watched').addEventListener('click',()=>{const list=readList('ama-movie-watching');if(!list.includes(key))list.push(key);localStorage.setItem('ama-movie-watching',JSON.stringify(list));set('favorite-status','✓ در فهرست درحال تماشا ثبت شد.');});
+const actors={
+ timothee:{name:'تیموتی شالامه',films:['تلماسه','تلماسه: بخش دوم','وانکا','مرا با نامت صدا کن']},
+ zendaya:{name:'زندایا',films:['تلماسه','تلماسه: بخش دوم','مرد عنکبوتی: راهی به خانه نیست','چالشگران']},
+ rebecca:{name:'ربکا فرگوسن',films:['تلماسه','تلماسه: بخش دوم','مأموریت غیرممکن','دکتر اسلیپ']},
+ jason:{name:'جیسون موموآ',films:['تلماسه','آکوامن','سریع و خشن ۱۰']},
+ director:{name:movie.director,films:[movie.title,'ورود','بلید رانر ۲۰۴۹','زندانیان']},
+ robert:{name:'رابرت پتینسون',films:['بتمن','تنت','اوقات خوب']},zoe:{name:'زویی کراویتز',films:['بتمن','مکس دیوانه: جاده خشم']},paul:{name:'پل دینو',films:['بتمن','خون به پا خواهد شد']},
+ matthew:{name:'متیو مک‌کانهی',films:['میان‌ستاره‌ای','باشگاه خریداران دالاس','کارآگاه حقیقی']},anne:{name:'آن هتوی',films:['میان‌ستاره‌ای','بینوایان','شوالیه تاریکی برمی‌خیزد']},jessica:{name:'جسیکا چستین',films:['میان‌ستاره‌ای','میس اسلون']},
+ keanu:{name:'کیانو ریوز',films:['جان ویک','ماتریکس','سرعت']},ian:{name:'ایان مک‌شین',films:['جان ویک','دِد وود']},leonardo:{name:'لئوناردو دی‌کاپریو',films:['تلقین','گرگ وال استریت','جزیره شاتر']},jonah:{name:'جونا هیل',films:['گرگ وال استریت','مانی‌بال']},joseph:{name:'جوزف گوردون لویت',films:['تلقین','شوالیه تاریکی برمی‌خیزد']},ellen:{name:'الیوت پیج',films:['تلقین','جونو']}
+};
+document.querySelectorAll('.cast-card').forEach(btn=>{const actor=actors[btn.dataset.actor];if(!actor)return;btn.querySelector('.cast-avatar').textContent=actor.name.slice(0,1);btn.addEventListener('click',()=>{document.querySelectorAll('.cast-card').forEach(b=>b.setAttribute('aria-expanded','false'));btn.setAttribute('aria-expanded','true');set('actor-film-title','فیلم‌های '+actor.name);const list=document.getElementById('actor-film-list');list.replaceChildren();actor.films.forEach(title=>{const match=Object.entries(movies).find(([id,m])=>m.title===title);const id=match?.[0];const data=match?.[1];const card=document.createElement('a');card.className='actor-film-card';card.href=id?'./movie-details.html?movie='+encodeURIComponent(id):'./index.html#latest';const img=document.createElement('img');img.loading='lazy';img.src=data?.poster||'';img.alt='پوستر '+title;img.onerror=()=>{img.style.display='none'};const name=document.createElement('p');name.className='font-bold mt-2';name.textContent=title;const meta=document.createElement('p');meta.className='muted text-xs mt-1';meta.textContent=data?(data.year+' · '+data.genreShort):'فیلم مرتبط';card.append(img,name,meta);list.append(card)});document.getElementById('actor-film-panel').hidden=false;document.getElementById('actor-film-panel').scrollIntoView({behavior:'smooth',block:'nearest'})})});
+const qualityHTML=(version,language)=>['480p','720p','1080p'].map(q=>`<div class="quality-row"><div class="quality-label"><strong>کیفیت ${q}</strong><small>${q==='480p'?'حجم کمتر':q==='720p'?'HD':'Full HD'}</small></div><button type="button" class="quality-action download-action" data-action="download" data-version="${version}" data-language="${language}" data-quality="${q}">⬇ دانلود</button><button type="button" class="quality-action play-action" data-action="stream" data-version="${version}" data-language="${language}" data-quality="${q}">▶ پخش آنلاین</button></div>`).join('');
+document.querySelectorAll('[data-download-list]').forEach(el=>{const type=el.dataset.downloadList;const version=type.startsWith('censored')?'سانسورشده':'بدون سانسور';const language=type.endsWith('dubbed')?'دوبله فارسی':'زیرنویس فارسی';el.innerHTML=qualityHTML(version,language)});
+const downloadNotice=document.getElementById('download-notice'),streamModal=document.getElementById('stream-modal');
+document.addEventListener('click',e=>{const btn=e.target.closest('[data-action]');if(!btn)return;const label=`${movie.title}، نسخه ${btn.dataset.version}، ${btn.dataset.language}، ${btn.dataset.quality}`;if(btn.dataset.action==='download'){downloadNotice.textContent=`لینک دانلود ${label} هنوز ثبت نشده است. آدرس واقعی فایل را برای همین گزینه وارد کن؛ لینک ساختگی قرار نداده‌ایم که کلیک بی‌نتیجه نماند.`}else{set('stream-title','پخش آنلاین '+movie.title);set('stream-message',`لینک پخش آنلاین ${label} هنوز ثبت نشده است. پس از افزودن لینک پلیر معتبر، همین دکمه آن را اجرا می‌کند.`);streamModal.classList.add('open')}});
+document.querySelectorAll('.version-tab').forEach(tab=>tab.addEventListener('click',()=>{const censored=tab.id==='censored-tab';document.getElementById('censored-panel').hidden=!censored;document.getElementById('uncensored-panel').hidden=censored;document.getElementById('censored-tab').setAttribute('aria-selected',String(censored));document.getElementById('uncensored-tab').setAttribute('aria-selected',String(!censored));downloadNotice.textContent='نسخه '+(censored?'سانسورشده':'بدون سانسور')+' انتخاب شده است.'}));
+document.querySelectorAll('[data-scroll]').forEach(btn=>btn.addEventListener('click',()=>document.getElementById('related-row').scrollBy({left:Number(btn.dataset.scroll)*260,behavior:'smooth'})));
+const trailerModal=document.getElementById('trailer-modal');document.getElementById('trailer-btn').addEventListener('click',()=>trailerModal.classList.add('open'));document.getElementById('close-trailer').addEventListener('click',()=>trailerModal.classList.remove('open'));document.getElementById('close-stream').addEventListener('click',()=>streamModal.classList.remove('open'));document.getElementById('stream-ok').addEventListener('click',()=>streamModal.classList.remove('open'));document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open')}));document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.modal').forEach(m=>m.classList.remove('open'))});
+const header=document.getElementById('site-header');function updateHeader(){header.classList.toggle('is-scrolled',window.scrollY>24)}window.addEventListener('scroll',updateHeader,{passive:true});updateHeader();
+const menuBtn=document.getElementById('mobile-open'),menu=document.getElementById('mobile-menu');function closeMenu(){menu.hidden=true;menuBtn.setAttribute('aria-expanded','false');menuBtn.textContent='☰';document.body.style.overflow=''}menuBtn.addEventListener('click',()=>{const open=menuBtn.getAttribute('aria-expanded')!=='true';menu.hidden=!open;menuBtn.setAttribute('aria-expanded',String(open));menuBtn.textContent=open?'✕':'☰';document.body.style.overflow=open?'hidden':''});document.addEventListener('click',e=>{if(!menu.hidden&&!menu.contains(e.target)&&!menuBtn.contains(e.target))closeMenu()});menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
+const detailHeaderSearchForm=document.getElementById('header-search-form'),detailHeaderSearchInput=document.getElementById('header-search-input'),detailSearchModal=document.getElementById('search-modal'),detailSearchInput=document.getElementById('search-input'),detailSearchForm=document.getElementById('search-form'),detailSearchResults=document.getElementById('search-results'),detailSearchMessage=document.getElementById('search-message');
+function openDetailSearch(){detailSearchModal.hidden=false;detailSearchModal.style.display='flex';document.body.classList.add('search-open');detailSearchInput.value=detailHeaderSearchInput.value;detailSearchInput.focus();runDetailMovieSearch(detailSearchInput.value)}
+function closeDetailSearch(){detailSearchModal.hidden=true;detailSearchModal.style.display='';document.body.classList.remove('search-open')}
+detailHeaderSearchInput.addEventListener('click',e=>{e.preventDefault();openDetailSearch()});detailHeaderSearchInput.addEventListener('focus',openDetailSearch);
+detailHeaderSearchForm.addEventListener('submit',e=>{e.preventDefault();openDetailSearch();runDetailMovieSearch(detailHeaderSearchInput.value)});
+document.getElementById('search-close').addEventListener('click',closeDetailSearch);
+detailSearchModal.addEventListener('click',e=>{if(e.target===detailSearchModal)closeDetailSearch()});
+const seriesCatalog={
+ 'breaking-bad':{title:'بریکینگ بد',subtitle:'Breaking Bad',year:'۲۰۰۸–۲۰۱۳',genre:'جنایی، درام',poster:'./images/series/breaking-bad.jpg'},
+ 'the-last-of-us':{title:'آخرین بازمانده از ما',subtitle:'The Last of Us',year:'۲۰۲۳',genre:'درام، آخرالزمانی',poster:'./images/series/the-last-of-us.jpg'},
+ 'stranger-things':{title:'چیزهای عجیب',subtitle:'Stranger Things',year:'۲۰۱۶',genre:'علمی‌تخیلی، معمایی',poster:'./images/series/stranger-things.jpg'},
+ 'game-of-thrones':{title:'بازی تاج‌وتخت',subtitle:'Game of Thrones',year:'۲۰۱۱–۲۰۱۹',genre:'فانتزی، درام',poster:'./images/series/game-of-thrones.jpg'}
+};
+function runDetailMovieSearch(q){detailSearchResults.replaceChildren();const norm=v=>String(v||'').toLocaleLowerCase('fa').replace(/[يى]/g,'ی').replace(/ك/g,'ک').trim();const query=norm(q);const items=[...Object.entries(movies).map(([id,m])=>({id,m,kind:'فیلم'})),...Object.entries(seriesCatalog).map(([id,m])=>({id,m,kind:'سریال'}))];const matches=items.filter(({m})=>!query||(norm(m.title+' '+m.subtitle+' '+m.genre+' '+m.year).includes(query)));detailSearchMessage.textContent=matches.length?`${matches.length} نتیجه پیدا شد`:'نتیجه‌ای پیدا نشد';matches.forEach(({id,m,kind})=>{const a=document.createElement('a');a.className='search-result-card';a.href=kind==='سریال'?'./series-details.html?series='+encodeURIComponent(id):'./movie-details.html?movie='+encodeURIComponent(id);const img=document.createElement('img');img.src=m.poster;img.alt='پوستر '+m.title;img.onerror=()=>{img.style.visibility='hidden'};const wrap=document.createElement('div');const title=document.createElement('strong');title.textContent=m.title;const meta=document.createElement('p');meta.className='result-meta';meta.textContent=kind+' · '+m.year+' · '+m.genre;wrap.append(title,meta);a.append(img,wrap);detailSearchResults.append(a)})}
+detailSearchInput.addEventListener('input',()=>runDetailMovieSearch(detailSearchInput.value));detailSearchForm.addEventListener('submit',e=>{e.preventDefault();runDetailMovieSearch(detailSearchInput.value)});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDetailSearch()});
+const commentKey='ama-movie-comments-'+key;
+function readComments(){try{return JSON.parse(localStorage.getItem(commentKey)||'[]')}catch{return []}}
+function saveComments(comments){localStorage.setItem(commentKey,JSON.stringify(comments))}
+function renderComments(){const list=document.getElementById('comments-list'),comments=readComments();list.replaceChildren();if(!comments.length){const empty=document.createElement('p');empty.className='panel p-5 muted';empty.textContent='هنوز نظری ثبت نشده؛ اولین نفر باش.';list.append(empty);return}
+comments.forEach((c,index)=>{const card=document.createElement('article');card.className='comment-card panel p-5';const name=document.createElement('h3');name.className='font-black mb-2';name.textContent=c.name;const body=document.createElement('p');body.className='muted leading-7 whitespace-pre-wrap';body.textContent=c.text;const date=document.createElement('p');date.className='muted text-xs mt-3';date.textContent=c.date;const replyList=document.createElement('div');replyList.className='mt-3 mr-3 pr-3 border-r-2 border-blue-500/40 space-y-2';(c.replies||[]).forEach(r=>{const rp=document.createElement('div');rp.className='rounded-xl bg-blue-500/5 p-3';const rn=document.createElement('strong');rn.textContent=r.name+' · پاسخ';const rt=document.createElement('p');rt.className='muted mt-1 whitespace-pre-wrap';rt.textContent=r.text;rp.append(rn,rt);replyList.append(rp)});const form=document.createElement('form');form.className='mt-4 flex flex-col sm:flex-row gap-2';const inputName=document.createElement('input');inputName.required=true;inputName.maxLength=40;inputName.placeholder='نام شما';inputName.setAttribute('aria-label','نام برای پاسخ');inputName.className='rounded-xl border border-slate-500 bg-transparent p-2';const inputText=document.createElement('input');inputText.required=true;inputText.maxLength=500;inputText.placeholder='پاسخ این نظر را بنویس...';inputText.setAttribute('aria-label','متن پاسخ');inputText.className='min-w-0 flex-1 rounded-xl border border-slate-500 bg-transparent p-2';const submit=document.createElement('button');submit.type='submit';submit.className='action primary';submit.textContent='ارسال پاسخ';form.append(inputName,inputText,submit);form.addEventListener('submit',e=>{e.preventDefault();const latest=readComments();if(!latest[index])return;latest[index].replies=latest[index].replies||[];latest[index].replies.push({name:inputName.value.trim(),text:inputText.value.trim()});saveComments(latest);renderComments()});card.append(name,body,date,replyList,form);list.append(card)})}
+renderComments();
+document.getElementById('comment-form').addEventListener('submit',e=>{e.preventDefault();const name=document.getElementById('comment-name').value.trim(),text=document.getElementById('comment-text').value.trim();if(!name||!text)return;const comments=readComments();comments.push({name,text,date:new Date().toLocaleDateString('fa-IR'),replies:[]});saveComments(comments);e.target.reset();renderComments()});
+
+// همگام‌سازی تم با صفحه اصلی
+const themeRoot=document.documentElement;const detailThemeToggle=document.getElementById('theme-toggle');const detailSun=document.getElementById('theme-sun');const detailMoon=document.getElementById('theme-moon');function setDetailTheme(theme){const dark=theme==='dark';themeRoot.classList.toggle('dark',dark);themeRoot.classList.toggle('light',!dark);if(detailSun)detailSun.classList.toggle('hidden',dark);if(detailMoon)detailMoon.classList.toggle('hidden',!dark);const meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.setAttribute('content',dark?'#070B14':'#F8FAFC');localStorage.setItem('ama-movie-theme',theme)}setDetailTheme(localStorage.getItem('ama-movie-theme')==='light'?'light':'dark');if(detailThemeToggle)detailThemeToggle.addEventListener('click',()=>setDetailTheme(themeRoot.classList.contains('dark')?'light':'dark'));
+</script>
+ 
+</body>
+</html>

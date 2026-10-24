@@ -179,6 +179,163 @@
             border-color: #CBD5E1 !important;
         }
         html.light footer [class*="text-slate-"] { color: #475569 !important; }
+
+        /* هدر شفاف در ابتدای صفحه و شیشه‌ای هنگام اسکرول */
+        #site-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem 1rem 0;
+            z-index: 50;
+            transition: background-color .28s ease, border-color .28s ease,
+                        backdrop-filter .28s ease, box-shadow .28s ease;
+            border-bottom: 1px solid transparent;
+        }
+        #site-header .header-shell {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr minmax(180px, 420px) 1fr;
+            align-items: center;
+            gap: 1rem;
+            min-height: 64px;
+        }
+        #site-header.is-scrolled {
+            position: fixed;
+            padding-top: .65rem;
+            padding-bottom: .65rem;
+            border-bottom-color: rgba(148,163,184,.25);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            box-shadow: 0 10px 35px rgba(0,0,0,.10);
+        }
+        html.dark #site-header.is-scrolled { background: rgba(7,11,20,.72); }
+        html.light #site-header.is-scrolled { background: rgba(248,250,252,.76); }
+        #site-header:not(.is-scrolled) .header-shell { background: transparent; }
+        .header-search {
+            display:flex; align-items:center; gap:.6rem; width:100%;
+            border:1px solid rgba(148,163,184,.28);
+            border-radius:9999px; padding:.45rem .6rem .45rem 1rem;
+            background:rgba(255,255,255,.10);
+            backdrop-filter:blur(8px);
+        }
+        .header-search input { min-width:0; flex:1; background:transparent; outline:none; }
+        html.light .header-search input { color:#0f172a; }
+        html.dark .header-search input { color:#f8fafc; }
+        .header-control {
+            display:inline-flex; align-items:center; justify-content:center;
+            width:42px; height:42px; flex-shrink:0; border-radius:9999px;
+            background:rgba(59,130,246,.12); color:#60a5fa;
+            transition:background .2s ease, transform .2s ease;
+        }
+        .header-control:hover { background:rgba(59,130,246,.22); transform:translateY(-1px); }
+        #mobile-menu { max-width:1280px; }
+        .genre-card.is-selected {
+            border-color: #3b82f6 !important;
+            box-shadow: 0 0 0 2px rgba(59,130,246,.22);
+            background-color: rgba(37,99,235,.16) !important;
+        }
+        #genre-search-button[hidden] { display:none !important; }
+        .movie-horizontal-row {
+            display:flex !important; overflow-x:auto; overflow-y:hidden;
+            gap:1rem; padding: .25rem .1rem 1rem;
+            scroll-snap-type:x mandatory; scrollbar-width:none;
+            -ms-overflow-style:none;
+        }
+        .movie-horizontal-row .movie-card {
+            display:block; flex:0 0 180px; width:180px; scroll-snap-align:start;
+        }
+        @media (min-width:640px) {
+            .movie-horizontal-row .movie-card { flex-basis:210px; width:210px; }
+        }
+        #movie-grid .movie-card { min-width:0; }
+        #movie-grid .movie-card.hidden { display:none !important; }
+        @media (max-width:639px) {
+            #site-header { padding-left:.65rem; padding-right:.65rem; }
+            #site-header .header-shell { grid-template-columns:auto minmax(100px,1fr) auto; gap:.5rem; }
+            .header-control { width:36px; height:36px; }
+            #site-logo-text { display:none; }
+            .header-search { padding:.35rem .5rem; }
+            .header-search button { padding:.45rem .65rem !important; }
+        }
+
+
+        /* آماده برای اتصال سرویس جست‌وجوی بیرونی بدون وابستگی UI به ربات */
+        .search-results { display:grid; gap:.75rem; max-height:48vh; overflow:auto; margin-top:1rem; }
+        .search-result-card { display:flex; align-items:center; gap:1rem; padding:.75rem; border:1px solid rgba(148,163,184,.2); border-radius:1rem; text-align:right; transition:border-color .2s, background .2s; }
+        .search-result-card:hover { border-color:rgba(59,130,246,.7); background:rgba(59,130,246,.08); }
+        .search-result-card img { width:64px; height:88px; flex-shrink:0; object-fit:cover; border-radius:.6rem; background:#172033; }
+        .search-result-card .result-meta { color:#94a3b8; font-size:.8rem; margin-top:.25rem; }
+        .carousel-shell { position:relative; }
+        .carousel-controls { display:flex; gap:.5rem; align-items:center; }
+        .carousel-arrow { display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border:1px solid rgba(96,165,250,.35); border-radius:9999px; background:rgba(37,99,235,.14); color:#60a5fa; font-size:1.35rem; }
+        .carousel-arrow:hover { background:rgba(37,99,235,.3); }
+        .carousel-arrow:disabled { opacity:.35; cursor:not-allowed; }
+        .movie-horizontal-row { scroll-behavior:smooth; }
+        .movie-horizontal-row > a { position:relative; flex:0 0 210px; height:300px; scroll-snap-align:start; }
+        .continue-card { display:flex; gap:1rem; align-items:center; min-width:0; border:1px solid rgba(148,163,184,.2); border-radius:1rem; padding:.75rem; background:rgba(15,23,42,.55); }
+        .continue-card img { width:76px; height:108px; object-fit:cover; border-radius:.65rem; }
+        .continue-progress { height:4px; border-radius:999px; overflow:hidden; background:rgba(148,163,184,.25); }
+        .continue-progress span { display:block; height:100%; background:#3b82f6; }
+        body.menu-open { overflow:hidden; }
+        html.dark .nav-label { color:#f1f5f9; font-weight:600; }
+        html.light .nav-label { color:#1e293b; font-weight:600; }
+        #site-logo img { width:3.25rem; height:3.25rem; }
+        #site-header.is-scrolled { padding-top:1rem; }
+        @media (max-width:639px) {
+            #site-header.is-scrolled { padding-top:1.15rem; padding-bottom:.65rem; }
+            #site-logo img { width:3rem; height:3rem; }
+            .movie-horizontal-row > a { flex-basis:165px; height:250px; }
+            .search-results { max-height:52vh; }
+        }
+        /* کارت‌های قابل تعامل و دکمه‌های روی لبه‌های اسلایدر */
+        .movie-card, .movie-horizontal-row > a { position:relative; }
+        .movie-card::after, .movie-horizontal-row > a::after {
+            content:""; position:absolute; inset:0; z-index:5; pointer-events:none;
+            background:linear-gradient(to top,rgba(2,7,17,.88),rgba(2,7,17,.08) 72%);
+            opacity:0; transition:opacity .22s ease;
+        }
+        .movie-card::before, .movie-horizontal-row > a::before {
+            content:"ادامه جزئیات"; position:absolute; z-index:6; pointer-events:none;
+            left:50%; top:50%; transform:translate(-50%,-35%);
+            white-space:nowrap; padding:.7rem 1rem; border-radius:9999px;
+            color:#fff; background:#2563eb; font-size:.85rem; font-weight:800;
+            opacity:0; transition:opacity .22s ease,transform .22s ease;
+        }
+        .movie-card:hover::after, .movie-card:focus-within::after,
+        .movie-horizontal-row > a:hover::after, .movie-horizontal-row > a:focus-visible::after { opacity:1; }
+        .movie-card:hover::before, .movie-card:focus-within::before,
+        .movie-horizontal-row > a:hover::before, .movie-horizontal-row > a:focus-visible::before {
+            opacity:1; transform:translate(-50%,-50%);
+        }
+        .carousel-edge-shell { position:relative; }
+        .carousel-edge-shell .movie-horizontal-row { padding-left:3.25rem; padding-right:3.25rem; }
+        .movie-horizontal-row::-webkit-scrollbar { display:none; width:0; height:0; }
+        .carousel-edge-button {
+            position:absolute; top:50%; transform:translateY(-50%); z-index:15;
+            width:42px; height:42px; border-radius:9999px; display:flex;
+            align-items:center; justify-content:center; color:#fff; font-size:1.6rem;
+            background:rgba(37,99,235,.92); border:1px solid rgba(255,255,255,.35);
+            box-shadow:0 8px 24px rgba(0,0,0,.28); transition:background .2s,transform .2s;
+        }
+        .carousel-edge-button:hover { background:#1d4ed8; transform:translateY(-50%) scale(1.06); }
+        .carousel-edge-button.prev { left:.35rem; }
+        .carousel-edge-button.next { right:.35rem; }
+        html.light .nav-label { color:#0f172a !important; font-weight:800; }
+        html.light #mobile-menu { background:rgba(255,255,255,.99); border-color:#94a3b8; box-shadow:0 18px 45px rgba(15,23,42,.18); }
+        html.light .header-search { background:rgba(255,255,255,.97); border-color:#64748b; box-shadow:0 2px 10px rgba(15,23,42,.08); }
+        html.light .header-search input { color:#0f172a; }
+        html.light .header-search input::placeholder { color:#475569; opacity:1; }
+        html.light .header-control { background:#dbeafe; color:#1d4ed8; border:1px solid #93c5fd; }
+        html.light .header-control:hover { background:#bfdbfe; color:#1e40af; }
+        #search-modal[hidden] { display:none !important; }
+        body.search-open { overflow:hidden; }
+        @media (max-width:639px) {
+            .carousel-edge-shell .movie-horizontal-row { padding-left:2.6rem; padding-right:2.6rem; }
+            .carousel-edge-button { width:36px; height:36px; }
+        }
+
     </style>
 </head>
 
@@ -187,196 +344,73 @@
     <!-- تصویر پس‌زمینه از این قسمت شروع می‌شود -->
     <section id="home" class="hero-bg relative min-h-[620px]">
 
-        <!-- HEADER ثابت -->
-        <header class="fixed inset-x-0 top-0 z-50 px-3 pt-4 sm:px-6">
-
-            <div class="site-header mx-auto flex w-full max-w-7xl
-                        items-center gap-3 rounded-full border
-                        border-b-4 border-b-blue-600 px-4 py-3
-                        shadow-2xl shadow-black/20
-                        backdrop-blur-xl transition-colors duration-300
-                        sm:gap-6 sm:px-6">
-
-                <!-- لوگو -->
-                <a href="#home"
-                   class="flex shrink-0 items-center gap-2 text-lg
-                          font-black sm:text-2xl">
-
-                    <img
-                src="./images/ChatGPT Image Jun 20, 2026, 03_14_11 PM.png"
-                alt="لوگوی آما مووی"
-                class="h-12 w-12 shrink-0 rounded-full object-contain sm:h-12 sm:w-12"
-            >
-                    <span class="whitespace-nowrap">
-                        آما <span class="text-blue-500">مووی</span>
-                    </span>
-                </a>
-
-                <!-- منوی اصلی، آیکون بالا و عنوان پایین -->
-                <nav class="hidden flex-1 items-center justify-center
-                            gap-3 sm:gap-5 md:flex lg:gap-8">
-
-                    <a href="#home"
-                       class="nav-item flex flex-col items-center gap-1
-                              text-blue-500">
-                        <svg class="h-5 w-5" viewBox="0 0 24 24"
-                             fill="none" stroke="currentColor"
-                             stroke-width="1.8">
-                            <path d="m3 10 9-7 9 7"/>
-                            <path d="M5 9v11h14V9M9 20v-7h6v7"/>
-                        </svg>
-                        <span class="text-xs font-bold">خانه</span>
-                    </a>
-
-                    <a href="#latest"
-                       class="nav-item nav-label flex flex-col items-center gap-1
-                              transition hover:text-blue-500">
-                        <svg class="h-5 w-5" viewBox="0 0 24 24"
-                             fill="none" stroke="currentColor"
-                             stroke-width="1.8">
-                            <rect x="3" y="4" width="18" height="16" rx="3"/>
-                            <path d="M7 4v4m5-4v4m5-4v4M7 16v4m5-4v4m5-4v4"/>
-                        </svg>
-                        <span class="text-xs">فیلم‌ها</span>
-                    </a>
-
-                    <a href="#series"
-                       class="nav-item nav-label flex flex-col items-center gap-1
-                              transition hover:text-blue-500">
-                        <svg class="h-5 w-5" viewBox="0 0 24 24"
-                             fill="none" stroke="currentColor"
-                             stroke-width="1.8">
-                            <rect x="3" y="7" width="18" height="14" rx="2"/>
-                            <path d="m9 3 3 4 3-4M12 11v6"/>
-                        </svg>
-                        <span class="text-xs">سریال‌ها</span>
-                    </a>
-
-                    <a href="#genres"
-                       class="nav-item nav-label flex flex-col items-center gap-1
-                              transition hover:text-blue-500">
-                        <svg class="h-5 w-5" viewBox="0 0 24 24"
-                             fill="none" stroke="currentColor"
-                             stroke-width="1.8">
-                            <rect x="3" y="3" width="7" height="7" rx="1"/>
-                            <rect x="14" y="3" width="7" height="7" rx="1"/>
-                            <rect x="3" y="14" width="7" height="7" rx="1"/>
-                            <rect x="14" y="14" width="7" height="7" rx="1"/>
-                        </svg>
-                        <span class="text-xs">ژانرها</span>
-                    </a>
-
-                    <a href="#latest"
-                       class="nav-item nav-label flex flex-col items-center gap-1
-                              transition hover:text-blue-500">
-                        <svg class="h-5 w-5" viewBox="0 0 24 24"
-                             fill="none" stroke="currentColor"
-                             stroke-width="1.8">
-                            <path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9L12 3Z"/>
-                        </svg>
-                        <span class="text-xs">محبوب‌ها</span>
-                    </a>
-
-                </nav>
-
-                <!-- کنترل‌ها -->
-                <div class="mr-auto flex shrink-0 items-center gap-2">
-
-                    <!-- باز کردن پنجره جست‌وجو -->
-                    <button id="search-open"
-                            type="button"
-                            aria-label="جست‌وجو"
-                            class="flex h-10 w-10 items-center justify-center
-                                   rounded-full bg-blue-500/10 text-blue-500
-                                   transition hover:bg-blue-500/20 sm:h-11 sm:w-11">
-
-                        <svg class="h-5 w-5" viewBox="0 0 24 24"
-                             fill="none" stroke="currentColor"
-                             stroke-width="2">
-                            <circle cx="11" cy="11" r="7"/>
-                            <path d="m16 16 5 5"/>
-                        </svg>
-                    </button>
-
-                    <!-- تغییر تم -->
-                    <button id="theme-toggle"
-                            type="button"
-                            aria-label="تغییر تم سایت"
-                            class="flex h-10 w-10 items-center justify-center
-                                   rounded-full bg-blue-500/10 text-blue-500
-                                   transition hover:bg-blue-500/20 sm:h-11 sm:w-11">
-
-                        <svg id="theme-sun" class="hidden h-5 w-5"
-                             viewBox="0 0 24 24" fill="none"
-                             stroke="currentColor" stroke-width="1.8">
+        <!-- هدر: راست کنترل‌ها، وسط جست‌وجو، چپ لوگو -->
+        <header id="site-header">
+            <div class="header-shell">
+                <!-- سمت راست: همبرگری، تم و پروفایل -->
+                <div class="flex items-center justify-self-start gap-2">
+                    <button id="mobile-open" type="button" aria-label="باز کردن منو"
+                            aria-expanded="false" class="header-control text-xl">☰</button>
+                    <button id="theme-toggle" type="button" aria-label="تغییر تم سایت"
+                            class="header-control">
+                        <svg id="theme-sun" class="hidden h-5 w-5" viewBox="0 0 24 24"
+                             fill="none" stroke="currentColor" stroke-width="1.8">
                             <circle cx="12" cy="12" r="4"/>
                             <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/>
                         </svg>
-
-                        <svg id="theme-moon" class="h-5 w-5"
-                             viewBox="0 0 24 24" fill="none"
-                             stroke="currentColor" stroke-width="1.8">
+                        <svg id="theme-moon" class="h-5 w-5" viewBox="0 0 24 24"
+                             fill="none" stroke="currentColor" stroke-width="1.8">
                             <path d="M20.9 13A9 9 0 0 1 11 3.1 9 9 0 1 0 20.9 13Z"/>
                         </svg>
                     </button>
-
-                    <a href="#login"
-                       class="hidden rounded-full bg-blue-600 px-5 py-3
-                              text-sm font-bold text-white transition
-                              hover:bg-blue-500 sm:inline-flex">
-                        ورود
+                    <a href="#login" aria-label="اطلاعات فردی و ورود"
+                       title="حساب کاربری"
+                       class="header-control overflow-hidden border border-blue-400/20">
+                        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="1.7">
+                            <circle cx="12" cy="8" r="4"/>
+                            <path d="M4 21a8 8 0 0 1 16 0"/>
+                        </svg>
                     </a>
-
-                    <!-- منوی موبایل -->
-                    <button id="mobile-open"
-                            type="button"
-                            aria-label="باز کردن منو"
-                            aria-expanded="false"
-                            class="flex h-10 w-10 items-center justify-center
-                                   rounded-full bg-blue-500/10 text-xl
-                                   text-blue-500 md:hidden">
-                        ☰
-                    </button>
                 </div>
+
+                <!-- وسط: سرچ تمام‌گرد -->
+                <form id="header-search-form" class="header-search justify-self-center">
+                    <svg class="h-5 w-5 shrink-0 text-blue-400" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/>
+                    </svg>
+                    <input id="header-search-input" type="search"
+                           aria-label="جست‌وجوی فیلم و سریال"
+                           placeholder="جست‌وجوی فیلم و سریال...">
+                    <button type="submit"
+                            class="rounded-full bg-blue-600 px-4 py-2 text-sm font-bold text-white transition hover:bg-blue-500">
+                        جست‌وجو
+                    </button>
+                </form>
+
+                <!-- سمت چپ: آرم سایت -->
+                <a id="site-logo" href="#home"
+                   class="flex items-center justify-self-end gap-2 text-lg font-black sm:text-2xl">
+                    <span id="site-logo-text" class="whitespace-nowrap">آما <span class="text-blue-500">مووی</span></span>
+                    <img src="./images/ChatGPT Image Jun 20, 2026, 03_14_11 PM.png"
+                         alt="لوگوی آما مووی"
+                         class="h-11 w-11 shrink-0 rounded-full object-contain">
+                </a>
             </div>
 
-            <!-- منوی موبایل با آیکون و نام زیر آن -->
-            <nav id="mobile-menu"
-                 hidden
-                 class="mx-auto mt-3 grid max-w-7xl grid-cols-3
-                        gap-2 rounded-3xl border border-blue-500/30
-                        bg-slate-950/95 p-4 shadow-2xl
-                        backdrop-blur-xl md:hidden">
-
-                <a href="#home" class="nav-label flex flex-col items-center gap-2 rounded-xl p-3 text-blue-400 hover:bg-blue-500/10">
-                    <span class="text-2xl">⌂</span>
-                    <span class="text-xs">خانه</span>
-                </a>
-
-                <a href="#latest" class="nav-label flex flex-col items-center gap-2 rounded-xl p-3 hover:bg-blue-500/10">
-                    <span class="text-2xl">🎬</span>
-                    <span class="text-xs">فیلم‌ها</span>
-                </a>
-
-                <a href="#series" class="nav-label flex flex-col items-center gap-2 rounded-xl p-3 hover:bg-blue-500/10">
-                    <span class="text-2xl">📺</span>
-                    <span class="text-xs">سریال‌ها</span>
-                </a>
-
-                <a href="#genres" class="nav-label flex flex-col items-center gap-2 rounded-xl p-3 hover:bg-blue-500/10">
-                    <span class="text-2xl">▦</span>
-                    <span class="text-xs">ژانرها</span>
-                </a>
-
-                <a href="#latest" class="nav-label flex flex-col items-center gap-2 rounded-xl p-3 hover:bg-blue-500/10">
-                    <span class="text-2xl">★</span>
-                    <span class="text-xs">محبوب‌ها</span>
-                </a>
-
-                <a href="#about" class="nav-label flex flex-col items-center gap-2 rounded-xl p-3 hover:bg-blue-500/10">
-                    <span class="text-2xl">ⓘ</span>
-                    <span class="text-xs">درباره ما</span>
-                </a>
+            <!-- تمام گزینه‌های ناوبری داخل منوی همبرگری -->
+            <nav id="mobile-menu" hidden
+                 class="mx-auto mt-3 grid max-w-7xl grid-cols-2 gap-2 rounded-3xl border border-blue-500/20 bg-slate-950/95 p-4 text-white shadow-2xl backdrop-blur-xl sm:grid-cols-3">
+                <a href="#home" class="nav-label rounded-xl p-3 transition hover:bg-blue-500/10">⌂　خانه</a>
+                <a href="#latest" class="nav-label rounded-xl p-3 transition hover:bg-blue-500/10">🎬　فیلم‌ها</a>
+                <a href="#series" class="nav-label rounded-xl p-3 transition hover:bg-blue-500/10">📺　سریال‌ها</a>
+                <a href="#genres" class="nav-label rounded-xl p-3 transition hover:bg-blue-500/10">▦　ژانرها</a>
+                <a href="#latest" class="nav-label rounded-xl p-3 transition hover:bg-blue-500/10">★　محبوب‌ها</a>
+                <a href="#favorites" id="favorites-link" class="nav-label rounded-xl p-3 transition hover:bg-blue-500/10">♡　علاقه‌مندی‌ها</a>
+                <a href="#about" class="nav-label rounded-xl p-3 transition hover:bg-blue-500/10">ⓘ　درباره ما</a>
+                <a href="#contact" class="nav-label rounded-xl p-3 transition hover:bg-blue-500/10">✉　تماس با ما</a>
+                <a href="#login" class="nav-label rounded-xl p-3 transition hover:bg-blue-500/10">👤　حساب کاربری / ورود</a>
             </nav>
         </header>
 
@@ -420,35 +454,6 @@
 <!-- بخش‌های محتوای صفحه -->
 <main class="min-h-screen bg-[#030916] text-white">
 
-    <!-- جست‌وجوی فیلم -->
-    <section class="mx-auto max-w-7xl px-5 pt-10 sm:px-8">
-        <form id="movie-search"
-              class="flex items-center gap-3 rounded-2xl
-                     border border-blue-400/20 bg-[#0a1528]
-                     p-3 shadow-xl shadow-black/20">
-
-            <span class="px-2 text-xl text-blue-400"
-                  aria-hidden="true">⌕</span>
-
-            <input
-                id="movie-search-input"
-                type="search"
-                placeholder="نام فیلم، سریال یا ژانر را وارد کن..."
-                class="min-w-0 flex-1 bg-transparent py-2
-                       text-sm text-white outline-none
-                       placeholder:text-slate-500"
-            >
-
-            <button type="submit"
-                    class="rounded-xl bg-blue-600 px-5 py-3
-                           text-sm font-bold transition
-                           hover:bg-blue-500">
-                جست‌وجو
-            </button>
-        </form>
-    </section>
-
-
     <!-- جدیدترین فیلم‌ها -->
     <section id="latest" class="mx-auto max-w-7xl px-5 py-16 sm:px-8">
 
@@ -457,29 +462,34 @@
                 <p class="mb-2 text-xs font-bold tracking-widest
                           text-blue-400">تازه‌های سینما</p>
                 <h2 class="text-2xl font-black sm:text-3xl">
-                    جدیدترین فیلم‌ها
+                    جذاب‌ترین فیلم‌های سینمایی
                 </h2>
             </div>
 
-            <a href="#all-movies"
+            <a href="#latest"
                class="shrink-0 text-sm text-blue-400 transition
                       hover:text-blue-300">
                 مشاهده همه ←
             </a>
         </div>
 
-        <div id="movie-grid"
-             class="grid grid-cols-2 gap-4 sm:grid-cols-3
-                    md:grid-cols-4 lg:grid-cols-6">
+        <div id="movie-carousel-shell" class="carousel-edge-shell">
+         <button type="button" class="carousel-edge-button cursor-pointer prev" data-carousel-dir="prev" data-carousel-target="movie-grid" aria-label="فیلم‌های قبلی"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
+</svg></button>
+          <button type="button" class="carousel-edge-button cursor-pointer next" data-carousel-dir="next" data-carousel-target="movie-grid" aria-label="فیلم‌های بعدی"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+</svg></button>
+          <div id="movie-grid" class="movie-horizontal-row" tabindex="0" aria-label="اسلایدر جذاب‌ترین فیلم‌های سینمایی">
 
             <!-- کارت فیلم ۱ -->
-            <article data-title="تلماسه علمی تخیلی"
+            <article data-search-item data-kind="movie" data-title="تلماسه" data-genre="علمی تخیلی" data-year="۲۰۲۴" data-poster="./images/movies/dune.jpg" data-title-search="تلماسه علمی تخیلی"
                      class="movie-card group overflow-hidden rounded-2xl
                             border border-white/10 bg-[#091426]
                             transition duration-300
                             hover:-translate-y-1 hover:border-blue-500/60">
 
-                <a href="#movie-dune" class="block">
+                <a href="./movie-details.html?movie=dune" class="block">
                     <div class="relative aspect-[2/3] overflow-hidden">
                         <img
                             src="./images/movies/dune.jpg"
@@ -519,13 +529,13 @@
             </article>
 
             <!-- کارت فیلم ۲ -->
-            <article data-title="بتمن اکشن"
+            <article data-search-item data-kind="movie" data-title="بتمن" data-genre="اکشن" data-year="۲۰۲۲" data-poster="./images/movies/batman.jpg" data-title-search="بتمن اکشن" data-title-old="بتمن اکشن"
                      class="movie-card group overflow-hidden rounded-2xl
                             border border-white/10 bg-[#091426]
                             transition duration-300
                             hover:-translate-y-1 hover:border-blue-500/60">
 
-                <a href="#movie-batman" class="block">
+                <a href="./movie-details.html?movie=batman" class="block">
                     <div class="relative aspect-[2/3] overflow-hidden">
                         <img src="./images/movies/batman.jpg"
                              alt="پوستر بتمن" loading="lazy"
@@ -546,13 +556,13 @@
             </article>
 
             <!-- کارت فیلم ۳ -->
-            <article data-title="میان ستاره ای علمی تخیلی"
+            <article data-search-item data-kind="movie" data-title="میان‌ستاره‌ای" data-genre="علمی تخیلی" data-year="۲۰۱۴" data-poster="./images/movies/interstellar.jpg" data-title-search="میان ستاره ای علمی تخیلی"
                      class="movie-card group overflow-hidden rounded-2xl
                             border border-white/10 bg-[#091426]
                             transition duration-300
                             hover:-translate-y-1 hover:border-blue-500/60">
 
-                <a href="#movie-interstellar" class="block">
+                <a href="./movie-details.html?movie=interstellar" class="block">
                     <div class="relative aspect-[2/3] overflow-hidden">
                         <img src="./images/movies/interstellar.jpg"
                              alt="پوستر میان‌ستاره‌ای" loading="lazy"
@@ -575,13 +585,13 @@
             </article>
 
             <!-- کارت فیلم ۴ -->
-            <article data-title="جان ویک اکشن"
+            <article data-search-item data-kind="movie" data-title="جان ویک" data-genre="اکشن" data-year="۲۰۱۴" data-poster="./images/movies/john-wick.jpg" data-title-search="جان ویک اکشن"
                      class="movie-card group overflow-hidden rounded-2xl
                             border border-white/10 bg-[#091426]
                             transition duration-300
                             hover:-translate-y-1 hover:border-blue-500/60">
 
-                <a href="#movie-john-wick" class="block">
+                <a href="./movie-details.html?movie=john-wick" class="block">
                     <div class="relative aspect-[2/3] overflow-hidden">
                         <img src="./images/movies/john-wick.jpg"
                              alt="پوستر جان ویک" loading="lazy"
@@ -602,13 +612,13 @@
             </article>
 
             <!-- کارت فیلم ۵ -->
-            <article data-title="گرگ وال استریت درام"
+            <article data-search-item data-kind="movie" data-title="گرگ وال استریت" data-genre="درام" data-year="۲۰۱۳" data-poster="./images/movies/wolf.jpg" data-title-search="گرگ وال استریت درام"
                      class="movie-card group overflow-hidden rounded-2xl
                             border border-white/10 bg-[#091426]
                             transition duration-300
                             hover:-translate-y-1 hover:border-blue-500/60">
 
-                <a href="#movie-wolf" class="block">
+                <a href="./movie-details.html?movie=wolf" class="block">
                     <div class="relative aspect-[2/3] overflow-hidden">
                         <img src="./images/movies/wolf.jpg"
                              alt="پوستر گرگ وال استریت" loading="lazy"
@@ -629,13 +639,13 @@
             </article>
 
             <!-- کارت فیلم ۶ -->
-            <article data-title="تلقین اکشن"
+            <article data-search-item data-kind="movie" data-title="تلقین" data-genre="اکشن" data-year="۲۰۱۰" data-poster="./images/movies/inception.jpg" data-title-search="تلقین اکشن"
                      class="movie-card group overflow-hidden rounded-2xl
                             border border-white/10 bg-[#091426]
                             transition duration-300
                             hover:-translate-y-1 hover:border-blue-500/60">
 
-                <a href="#movie-inception" class="block">
+                <a href="./movie-details.html?movie=inception" class="block">
                     <div class="relative aspect-[2/3] overflow-hidden">
                         <img src="./images/movies/inception.jpg"
                              alt="پوستر تلقین" loading="lazy"
@@ -655,6 +665,7 @@
                 </a>
             </article>
 
+          </div>
         </div>
 
         <p id="search-empty"
@@ -680,61 +691,68 @@
             <div class="grid grid-cols-2 gap-4 sm:grid-cols-3
                         lg:grid-cols-6">
 
-                <a href="#latest" data-genre="اکشن"
-                   class="genre-card rounded-2xl border border-blue-400/20
+                <button type="button" data-genre="اکشن"
+                   class="genre-card w-full text-right rounded-2xl border border-blue-400/20
                           bg-gradient-to-br from-blue-600/20 to-[#0a1528]
                           p-5 transition hover:-translate-y-1
                           hover:border-blue-400/70">
                     <span class="text-3xl">⚡</span>
                     <h3 class="mt-4 font-bold">اکشن</h3>
                     <p class="mt-1 text-xs text-slate-400">هیجان بی‌وقفه</p>
-                </a>
+                </button>
 
-                <a href="#latest" data-genre="درام"
-                   class="genre-card rounded-2xl border border-white/10
+                <button type="button" data-genre="درام"
+                   class="genre-card w-full text-right rounded-2xl border border-white/10
                           bg-[#0a1528] p-5 transition
                           hover:-translate-y-1 hover:border-blue-400/70">
                     <span class="text-3xl">🎭</span>
                     <h3 class="mt-4 font-bold">درام</h3>
                     <p class="mt-1 text-xs text-slate-400">داستان‌های ماندگار</p>
-                </a>
+                </button>
 
-                <a href="#latest" data-genre="علمی تخیلی"
-                   class="genre-card rounded-2xl border border-white/10
+                <button type="button" data-genre="علمی تخیلی"
+                   class="genre-card w-full text-right rounded-2xl border border-white/10
                           bg-[#0a1528] p-5 transition
                           hover:-translate-y-1 hover:border-blue-400/70">
                     <span class="text-3xl">🚀</span>
                     <h3 class="mt-4 font-bold">علمی‌تخیلی</h3>
                     <p class="mt-1 text-xs text-slate-400">فراتر از واقعیت</p>
-                </a>
+                </button>
 
-                <a href="#latest" data-genre="ترسناک"
-                   class="genre-card rounded-2xl border border-white/10
+                <button type="button" data-genre="ترسناک"
+                   class="genre-card w-full text-right rounded-2xl border border-white/10
                           bg-[#0a1528] p-5 transition
                           hover:-translate-y-1 hover:border-blue-400/70">
                     <span class="text-3xl">🌑</span>
                     <h3 class="mt-4 font-bold">ترسناک</h3>
                     <p class="mt-1 text-xs text-slate-400">مرز ترس و هیجان</p>
-                </a>
+                </button>
 
-                <a href="#latest" data-genre="کمدی"
-                   class="genre-card rounded-2xl border border-white/10
+                <button type="button" data-genre="کمدی"
+                   class="genre-card w-full text-right rounded-2xl border border-white/10
                           bg-[#0a1528] p-5 transition
                           hover:-translate-y-1 hover:border-blue-400/70">
                     <span class="text-3xl">🎬</span>
                     <h3 class="mt-4 font-bold">کمدی</h3>
                     <p class="mt-1 text-xs text-slate-400">برای حال خوب</p>
-                </a>
+                </button>
 
-                <a href="#latest" data-genre="ماجراجویی"
-                   class="genre-card rounded-2xl border border-white/10
+                <button type="button" data-genre="ماجراجویی"
+                   class="genre-card w-full text-right rounded-2xl border border-white/10
                           bg-[#0a1528] p-5 transition
                           hover:-translate-y-1 hover:border-blue-400/70">
                     <span class="text-3xl">🧭</span>
                     <h3 class="mt-4 font-bold">ماجراجویی</h3>
                     <p class="mt-1 text-xs text-slate-400">سفر به ناشناخته‌ها</p>
-                </a>
+                </button>
 
+            </div>
+            <div class="mt-7 flex flex-wrap items-center gap-4">
+                <p id="genre-selection-status" class="text-sm text-slate-400">می‌توانی چند ژانر را هم‌زمان انتخاب کنی.</p>
+                <button id="genre-search-button" type="button" hidden
+                        class="rounded-full bg-blue-600 px-6 py-3 font-bold text-white shadow-lg transition hover:bg-blue-500">
+                    جست‌وجوی فیلم‌ها با ژانرهای انتخاب‌شده ←
+                </button>
             </div>
         </div>
     </section>
@@ -751,15 +769,22 @@
                     سریال‌های پرطرفدار
                 </h2>
             </div>
-            <a href="#all-series"
+            <a href="#series"
                class="shrink-0 text-sm text-blue-400 hover:text-blue-300">
                 مشاهده همه ←
             </a>
         </div>
 
-        <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+        <div id="series-carousel-shell" class="carousel-edge-shell">
+            <button type="button" class="carousel-edge-button cursor-pointer prev" data-carousel-dir="prev" data-carousel-target="series-carousel" aria-label="سریال‌های قبلی"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
+</svg></button>
+          <button type="button" class="carousel-edge-button cursor-pointer next" data-carousel-dir="next" data-carousel-target="series-carousel" aria-label="سریال‌های بعدی"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+</svg></button>
+          <div id="series-carousel" class="movie-horizontal-row" tabindex="0" aria-label="اسلایدر سریال‌های پرطرفدار">
 
-            <a href="#series-dark"
+            <a data-search-item data-kind="series" data-title="دارک" data-genre="معمایی" data-year="۲۰۱۷" data-poster="./images/series/dark.jpg" href="./series-details.html?series=dark"
                class="group relative min-h-52 overflow-hidden rounded-2xl
                       border border-white/10 bg-[#0a1528]">
                 <img src="./images/series/dark.jpg" alt="پوستر سریال دارک"
@@ -775,7 +800,7 @@
                 </div>
             </a>
 
-            <a href="#series-breaking-bad"
+            <a data-search-item data-kind="series" data-title="بریکینگ بد" data-genre="جنایی" data-year="۲۰۰۸" data-poster="./images/series/breaking-bad.jpg" href="./series-details.html?series=breaking-bad"
                class="group relative min-h-52 overflow-hidden rounded-2xl
                       border border-white/10 bg-[#0a1528]">
                 <img src="./images/series/breaking-bad.jpg"
@@ -791,7 +816,7 @@
                 </div>
             </a>
 
-            <a href="#series-stranger-things"
+            <a data-search-item data-kind="series" data-title="چیزهای عجیب" data-genre="علمی‌تخیلی" data-year="۲۰۱۶" data-poster="./images/series/stranger-things.jpg" href="./series-details.html?series=stranger-things"
                class="group relative min-h-52 overflow-hidden rounded-2xl
                       border border-white/10 bg-[#0a1528]">
                 <img src="./images/series/stranger-things.jpg"
@@ -807,7 +832,7 @@
                 </div>
             </a>
 
-            <a href="#series-game-of-thrones"
+            <a data-search-item data-kind="series" data-title="بازی تاج‌وتخت" data-genre="فانتزی" data-year="۲۰۱۱" data-poster="./images/series/game-of-thrones.jpg" href="./series-details.html?series=game-of-thrones"
                class="group relative min-h-52 overflow-hidden rounded-2xl
                       border border-white/10 bg-[#0a1528]">
                 <img src="./images/series/game-of-thrones.jpg"
@@ -823,9 +848,26 @@
                 </div>
             </a>
 
+          </div>
         </div>
     </section>
 
+
+    <!-- ادامه تماشا: فقط پس از ثبت پیشرفت پخش نمایش داده می‌شود -->
+    <section id="continue-watching-section" hidden class="mx-auto max-w-7xl px-5 py-10 sm:px-8">
+      <div class="mb-5">
+        <p class="mb-2 text-xs font-bold tracking-widest text-blue-400">از همان‌جا ادامه بده</p>
+        <h2 class="text-2xl font-black">ادامه تماشا</h2>
+      </div>
+      <div id="continue-watching-list" class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3"></div>
+    </section>
+
+    <!-- فهرست علاقه‌مندی‌ها -->
+    <section id="favorites" class="mx-auto max-w-7xl px-5 py-10 sm:px-8">
+      <h2 class="text-2xl font-black">علاقه‌مندی‌ها</h2>
+      <p class="mt-3 text-sm text-slate-400">فیلم‌هایی که از صفحه جزئیات ذخیره می‌کنی در همین مرورگر نگهداری می‌شوند.</p>
+      <div id="home-favorites-list" class="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5"></div>
+    </section>
 
     <!-- فوتر -->
     <footer id="contact"
@@ -926,9 +968,10 @@
                 </button>
             </form>
 
-            <p id="search-message" class="mt-4 text-sm opacity-70">
-                نام فیلم مورد نظرت را وارد کن.
+            <p id="search-message" class="mt-4 text-sm opacity-70" role="status" aria-live="polite">
+                نام فیلم یا سریال را وارد کن.
             </p>
+            <div id="search-results" class="search-results" aria-label="نتایج جست‌وجو"></div>
         </div>
     </div>
 
@@ -964,114 +1007,326 @@
             setTheme(root.classList.contains("dark") ? "light" : "dark");
         });
 
-        // منوی موبایل
+        // منوی همبرگری
         const mobileOpen = document.getElementById("mobile-open");
         const mobileMenu = document.getElementById("mobile-menu");
-
+        function closeMobileMenu() {
+            mobileMenu.hidden = true;
+            mobileOpen.setAttribute("aria-expanded", "false");
+            mobileOpen.setAttribute("aria-label", "باز کردن منو");
+            mobileOpen.textContent = "☰";
+            document.body.classList.remove("menu-open");
+        }
+        function openMobileMenu() {
+            mobileMenu.hidden = false;
+            mobileOpen.setAttribute("aria-expanded", "true");
+            mobileOpen.setAttribute("aria-label", "بستن منو");
+            mobileOpen.textContent = "✕";
+            document.body.classList.add("menu-open");
+        }
         mobileOpen.addEventListener("click", () => {
-            const isOpen = mobileOpen.getAttribute("aria-expanded") === "true";
-
-            mobileMenu.hidden = isOpen;
-            mobileOpen.setAttribute("aria-expanded", String(!isOpen));
-            mobileOpen.textContent = isOpen ? "☰" : "✕";
+            mobileOpen.getAttribute("aria-expanded") === "true" ? closeMobileMenu() : openMobileMenu();
+        });
+        mobileMenu.querySelectorAll("a").forEach(link => link.addEventListener("click", closeMobileMenu));
+        document.addEventListener("click", event => {
+            if (!mobileMenu.hidden && !mobileMenu.contains(event.target) && !mobileOpen.contains(event.target)) {
+                closeMobileMenu();
+            }
         });
 
-        mobileMenu.querySelectorAll("a").forEach(link => {
-            link.addEventListener("click", () => {
-                mobileMenu.hidden = true;
-                mobileOpen.setAttribute("aria-expanded", "false");
-                mobileOpen.textContent = "☰";
-            });
-        });
+        // هدر در ابتدا شفاف و هم‌رنگ تصویر Hero است؛ با اسکرول شیشه‌ای می‌شود.
+        const siteHeader = document.getElementById("site-header");
+        function updateHeaderOnScroll() {
+            siteHeader.classList.toggle("is-scrolled", window.scrollY > 24);
+        }
+        window.addEventListener("scroll", updateHeaderOnScroll, { passive: true });
+        updateHeaderOnScroll();
 
-        // پنجره جست‌وجو
+        // لایه جست‌وجو: UI از منبع داده مستقل است؛ ربات بعداً با registerProvider متصل می‌شود.
         const searchModal = document.getElementById("search-modal");
         const searchOpen = document.getElementById("search-open");
         const searchClose = document.getElementById("search-close");
         const searchInput = document.getElementById("search-input");
         const searchForm = document.getElementById("search-form");
         const searchMessage = document.getElementById("search-message");
+        const searchResults = document.getElementById("search-results");
+        const inlineSearchForm = document.getElementById("movie-search");
+        const inlineSearchInput = document.getElementById("movie-search-input");
+        const headerSearchForm = document.getElementById("header-search-form");
+        const headerSearchInput = document.getElementById("header-search-input");
+        const movieCards = [...document.querySelectorAll('#movie-grid .movie-card')];
+        const emptyMessage = document.getElementById("search-empty");
+        const normalizeSearchText = value => String(value || "")
+            .normalize("NFKC").replace(/[يى]/g, "ی").replace(/ك/g, "ک")
+            .replace(/[\u064B-\u065F\u0670]/g, "").replace(/\s+/g, " ")
+            .trim().toLocaleLowerCase("fa");
+
+        const searchProviders = new Map();
+        window.AmaMovieSearch = {
+            registerProvider(name, searchFn) {
+                if (typeof name !== "string" || !name.trim() || typeof searchFn !== "function") {
+                    throw new TypeError("Provider needs a name and an async search function.");
+                }
+                searchProviders.set(name, searchFn);
+                return () => searchProviders.delete(name);
+            },
+            async search(query) {
+                const q = normalizeSearchText(query);
+                const local = [...document.querySelectorAll("[data-search-item]")].map(el => ({
+                    id: el.id || el.getAttribute("href") || el.dataset.title,
+                    title: el.dataset.title || el.querySelector("h3")?.textContent?.trim() || "",
+                    kind: el.dataset.kind || "movie",
+                    genre: el.dataset.genre || "",
+                    year: el.dataset.year || "",
+                    poster: el.dataset.poster || el.querySelector("img")?.getAttribute("src") || "",
+                    url: el.getAttribute("href") || el.querySelector("a[href]")?.getAttribute("href") || "#",
+                    source: "local"
+                })).filter(item => {
+                    const haystack = normalizeSearchText([item.title, item.genre, item.kind, item.year].join(" "));
+                    return !q || haystack.includes(q);
+                });
+                const remoteResults = await Promise.all([...searchProviders.values()].map(async provider => {
+                    try {
+                        const result = await provider(query);
+                        return Array.isArray(result) ? result : [];
+                    } catch (error) {
+                        console.error("AmaMovie search provider failed:", error);
+                        return [];
+                    }
+                }));
+                const seen = new Set();
+                return [...local, ...remoteResults.flat()].filter(item => {
+                    if (!item || !item.title) return false;
+                    const key = normalizeSearchText(item.title) + "|" + normalizeSearchText(item.kind);
+                    if (seen.has(key)) return false;
+                    seen.add(key);
+                    return true;
+                });
+            }
+        };
 
         function openSearch() {
             searchModal.hidden = false;
             searchModal.classList.add("flex");
-            searchInput.focus();
+            document.body.classList.add("search-open", "menu-open");
+            requestAnimationFrame(() => searchInput.focus());
         }
-
         function closeSearch() {
             searchModal.hidden = true;
             searchModal.classList.remove("flex");
+            searchInput.value = "";
+            searchResults.replaceChildren();
+            searchMessage.textContent = "نام فیلم یا سریال را وارد کن.";
+            if (headerSearchInput) headerSearchInput.value = "";
+            if (inlineSearchInput) inlineSearchInput.value = "";
+            // بستن پنجره، فیلتر قبلی را هم پاک می‌کند.
+            movieCards.forEach(card => card.classList.remove("hidden"));
+            if (emptyMessage) emptyMessage.classList.add("hidden");
+            document.body.classList.remove("search-open");
+            if (mobileMenu && !mobileMenu.hidden) return;
+            document.body.classList.remove("menu-open");
         }
-
-        searchOpen.addEventListener("click", openSearch);
-        searchClose.addEventListener("click", closeSearch);
-
+        if (searchOpen) searchOpen.addEventListener("click", openSearch);
+        if (searchClose) searchClose.addEventListener("click", closeSearch);
+        // کلیک روی هر ورودی جست‌وجوی بیرونی، پنجره واحد جست‌وجو را باز می‌کند.
+        [headerSearchInput, inlineSearchInput].filter(Boolean).forEach(input => {
+            input.setAttribute("readonly", "readonly");
+            input.setAttribute("aria-haspopup", "dialog");
+            input.addEventListener("click", openSearch);
+            input.addEventListener("focus", openSearch);
+        });
         searchModal.addEventListener("click", event => {
             if (event.target === searchModal) closeSearch();
         });
 
-        document.addEventListener("keydown", event => {
-            if (event.key === "Escape") closeSearch();
-        });
-
-        searchForm.addEventListener("submit", event => {
-            event.preventDefault();
-
-            const query = searchInput.value.trim();
-
-            if (!query) {
-                searchMessage.textContent = "ابتدا نام فیلم یا سریال را وارد کن.";
-                searchInput.focus();
+        function renderSearchResults(items) {
+            searchResults.replaceChildren();
+            if (!items.length) {
+                searchMessage.textContent = "نتیجه‌ای پیدا نشد.";
                 return;
             }
+            searchMessage.textContent = `${items.length} نتیجه پیدا شد.`;
+            const fragment = document.createDocumentFragment();
+            items.forEach(item => {
+                const link = document.createElement("a");
+                link.className = "search-result-card";
+                link.href = typeof item.url === "string" ? item.url : "#";
+                const img = document.createElement("img");
+                img.alt = "";
+                img.loading = "lazy";
+                img.src = item.poster || "";
+                img.onerror = () => { img.style.visibility = "hidden"; };
+                const body = document.createElement("div");
+                body.className = "min-w-0";
+                const title = document.createElement("div");
+                title.className = "font-bold";
+                title.textContent = item.title;
+                const meta = document.createElement("div");
+                meta.className = "result-meta";
+                meta.textContent = [item.kind === "series" ? "سریال" : "فیلم", item.year, item.genre].filter(Boolean).join(" • ");
+                body.append(title, meta);
+                link.append(img, body);
+                fragment.append(link);
+            });
+            searchResults.append(fragment);
+        }
+        async function runSearch(query, showModal = false) {
+            const value = String(query || "").trim();
+            if (showModal) openSearch();
+            if (!value) {
+                searchMessage.textContent = "ابتدا نام فیلم، سریال یا ژانر را وارد کن.";
+                searchResults.replaceChildren();
+                return;
+            }
+            searchMessage.textContent = "در حال جست‌وجو...";
+            try {
+                const results = await window.AmaMovieSearch.search(value);
+                renderSearchResults(results);
+                if (inlineSearchInput) inlineSearchInput.value = value;
+                if (headerSearchInput) headerSearchInput.value = value;
+                if (searchInput) searchInput.value = value;
+                if (!showModal) openSearch();
+            } catch (error) {
+                console.error("AmaMovie search failed:", error);
+                searchMessage.textContent = "جست‌وجو موقتاً در دسترس نیست.";
+            }
+        }
+        searchForm.addEventListener("submit", event => {
+            event.preventDefault();
+            runSearch(searchInput.value, true);
+        });
+        if (inlineSearchForm) inlineSearchForm.addEventListener("submit", event => {
+            event.preventDefault();
+            runSearch(inlineSearchInput.value, true);
+        });
+        headerSearchForm.addEventListener("submit", event => {
+            event.preventDefault();
+            runSearch(headerSearchInput.value, true);
+        });
+        document.addEventListener("keydown", event => {
+            if (event.key === "Escape") {
+                closeSearch();
+                if (mobileMenu && !mobileMenu.hidden) closeMobileMenu();
+            }
+        });
 
-            filterMovies(query);
-            inlineSearchInput.value = query;
-            closeSearch();
-            document.getElementById("latest").scrollIntoView({
-                behavior: "smooth"
+        // نمایش علاقه‌مندی‌های ذخیره‌شده از صفحه جزئیات
+        function renderHomeFavorites() {
+            const target = document.getElementById("home-favorites-list");
+            if (!target) return;
+            let ids = []; try { ids = JSON.parse(localStorage.getItem("ama-movie-favorites") || "[]"); } catch {}
+            const catalog = [...document.querySelectorAll("#movie-grid .movie-card")];
+            target.replaceChildren();
+            const matched = ids.map(id => catalog.find(card => {
+                const link = card.querySelector("a[href]");
+                return link && new URL(link.href, location.href).searchParams.get("movie") === id;
+            })).filter(Boolean);
+            if (!matched.length) { const p = document.createElement("p"); p.className = "text-sm text-slate-400"; p.textContent = "هنوز فیلمی به علاقه‌مندی‌ها اضافه نشده."; target.append(p); return; }
+            matched.forEach(card => { const clone = card.cloneNode(true); clone.classList.add("w-full"); target.append(clone); });
+        }
+        renderHomeFavorites();
+
+        // اسلایدرهای افقی با دکمه‌های قابل استفاده در دسکتاپ و موبایل
+        document.querySelectorAll("[data-carousel-target]").forEach(button => {
+            button.addEventListener("click", () => {
+                const row = document.getElementById(button.dataset.carouselTarget);
+                if (!row) return;
+                const direction = button.dataset.carouselDir === "prev" ? -1 : 1;
+                row.scrollBy({ left: direction * Math.max(row.clientWidth * .8, 220), behavior: "smooth" });
             });
         });
 
-          const inlineSearchForm = document.getElementById("movie-search");
-          const inlineSearchInput = document.getElementById("movie-search-input");
-          const movieCards = [...document.querySelectorAll(".movie-card")];
-          const emptyMessage = document.getElementById("search-empty");
-
-    function filterMovies(query) {
-        const value = query.trim().toLowerCase();
-        let visibleCount = 0;
-
-        movieCards.forEach(card => {
-            const title = (card.dataset.title || "").toLowerCase();
-            const matches = title.includes(value);
-
-            card.classList.toggle("hidden", !matches);
-
-            if (matches) visibleCount++;
+        // ادامه تماشا: قرارداد رویداد برای پلیر فعلی یا پلیر آینده.
+        const CONTINUE_KEY = "ama-movie-continue-v1";
+        const continueSection = document.getElementById("continue-watching-section");
+        const continueList = document.getElementById("continue-watching-list");
+        function readContinueItems() {
+            try {
+                const value = JSON.parse(localStorage.getItem(CONTINUE_KEY) || "[]");
+                return Array.isArray(value) ? value : [];
+            } catch { return []; }
+        }
+        function renderContinueWatching() {
+            const items = readContinueItems().filter(item => item && item.id && item.title && Number(item.duration) > 0);
+            continueList.replaceChildren();
+            continueSection.hidden = items.length === 0;
+            items.slice(0, 12).forEach(item => {
+                const card = document.createElement("a");
+                card.className = "continue-card";
+                card.href = item.url || "#";
+                const img = document.createElement("img");
+                img.src = item.poster || "";
+                img.alt = "";
+                img.loading = "lazy";
+                const info = document.createElement("div");
+                info.className = "min-w-0 flex-1";
+                const title = document.createElement("h3");
+                title.className = "font-bold";
+                title.textContent = item.title;
+                const progressText = document.createElement("p");
+                progressText.className = "my-2 text-xs text-slate-400";
+                const percent = Math.max(0, Math.min(100, Math.round(Number(item.position) / Number(item.duration) * 100)));
+                progressText.textContent = `ادامه از ${Math.floor(Number(item.position) / 60)} دقیقه • ${percent}%`;
+                const bar = document.createElement("div");
+                bar.className = "continue-progress";
+                const fill = document.createElement("span");
+                fill.style.width = percent + "%";
+                bar.append(fill);
+                info.append(title, progressText, bar);
+                card.append(img, info);
+                continueList.append(card);
+            });
+        }
+        window.AmaMovieContinueWatching = {
+            update(item) {
+                if (!item || !item.id || !item.title || !(Number(item.duration) > 0)) return;
+                const items = readContinueItems().filter(entry => entry.id !== item.id);
+                if (Number(item.position) > 15 && Number(item.position) < Number(item.duration) - 20) {
+                    items.unshift({
+                        id: String(item.id), title: String(item.title),
+                        kind: item.kind === "series" ? "series" : "movie",
+                        poster: String(item.poster || ""), url: String(item.url || "#"),
+                        position: Math.max(0, Number(item.position)),
+                        duration: Number(item.duration), updatedAt: Date.now()
+                    });
+                }
+                localStorage.setItem(CONTINUE_KEY, JSON.stringify(items.slice(0, 12)));
+                renderContinueWatching();
+            }
+        };
+        window.addEventListener("ama-movie:playback-progress", event => {
+            window.AmaMovieContinueWatching.update(event.detail);
         });
+        renderContinueWatching();
 
-        emptyMessage.classList.toggle("hidden", visibleCount > 0);
-    }
-
-    inlineSearchForm.addEventListener("submit", event => {
-        event.preventDefault();
-        filterMovies(inlineSearchInput.value);
-        document.getElementById("latest").scrollIntoView({
-            behavior: "smooth"
+        // انتخاب چند ژانر و رفتن به صفحه نتایج
+        const selectedGenres = new Set();
+        const genreCards = [...document.querySelectorAll(".genre-card")];
+        const genreSearchButton = document.getElementById("genre-search-button");
+        const genreSelectionStatus = document.getElementById("genre-selection-status");
+        genreCards.forEach(genre => {
+            genre.addEventListener("click", event => {
+                event.preventDefault();
+                const name = genre.dataset.genre;
+                if (selectedGenres.has(name)) {
+                    selectedGenres.delete(name);
+                    genre.classList.remove("is-selected");
+                    genre.setAttribute("aria-pressed", "false");
+                } else {
+                    selectedGenres.add(name);
+                    genre.classList.add("is-selected");
+                    genre.setAttribute("aria-pressed", "true");
+                }
+                genreSearchButton.hidden = selectedGenres.size === 0;
+                genreSelectionStatus.textContent = selectedGenres.size
+                    ? `${selectedGenres.size} ژانر انتخاب شده: ${[...selectedGenres].join("، ")}`
+                    : "می‌توانی چند ژانر را هم‌زمان انتخاب کنی.";
+            });
         });
-    });
-
-    inlineSearchInput.addEventListener("input", () => {
-        filterMovies(inlineSearchInput.value);
-    });
-
-    document.querySelectorAll(".genre-card").forEach(genre => {
-        genre.addEventListener("click", () => {
-            inlineSearchInput.value = genre.dataset.genre;
-            filterMovies(inlineSearchInput.value);
+        genreSearchButton.addEventListener("click", () => {
+            const params = new URLSearchParams({ genres: [...selectedGenres].join(",") });
+            window.location.href = `genre-results.html?${params.toString()}`;
         });
-    });
     </script>
     
 
